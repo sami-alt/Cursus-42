@@ -6,16 +6,16 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:17:22 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/04 15:23:48 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/05 13:49:31 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isascii(int c)
+int	ft_isascii(int c)
 {
-    if(c >= 33 && c <= 126)
-        return 1;
-    else
-        return 0;
+	if (c >= 33 && c <= 126)
+		return (1);
+	else
+		return (0);
 }

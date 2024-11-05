@@ -6,17 +6,16 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:26:57 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/04 15:24:35 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:27:23 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isprint(int c)
+int	ft_isprint(int c)
 {
-    if(c > 32 && c < 127)
-        return 1;
-    else
-        return 0;
+	if (c > 32 && c < 127)
+		return (1);
+	else
+		return (0);
 }
-

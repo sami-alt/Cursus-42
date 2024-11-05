@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 15:06:06 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/04 14:43:55 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/05 14:27:24 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ static int	ft_is_number(char c)
 	return (c >= '0' && c <= '9');
 }
 
-signed long long	ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
-	long long		out;
-	int				sign;
+	long		flow_check;
+	int			res;
+	int			sign;
 
-	out = 0;
+	flow_check = 0;
 	sign = 1;
 	while (ft_is_space(*str))
 		str++;
@@ -44,11 +45,12 @@ signed long long	ft_atoi(char *str)
 	}
 	while (ft_is_number(*str))
 	{
-		out = out * 10 + (*str++ - '0');
-		if (out > LLONG_MAX)
+		flow_check = flow_check * 10 + (*str++ - '0');
+		if (flow_check > INT_MAX)
 			return (-1);
-		else if (out < LLONG_MIN)
+		else if (flow_check < INT_MIN)
 			return (0);
 	}
-	return (out * sign);
+	res = flow_check;
+	return (res * sign);
 }

@@ -6,14 +6,14 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:37:54 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/04 12:38:53 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:16:52 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-    while(*s)
-        write(fd, s++, 1);
+	while (*s)
+		write(fd, s++, 1);
 }
