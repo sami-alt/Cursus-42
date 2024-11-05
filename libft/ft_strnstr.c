@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha.student@hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-01 15:05:16 by sraiha            #+#    #+#             */
-/*   Updated: 2024-11-01 15:05:16 by sraiha           ###   ########.fi       */
+/*   Created: 2024/11/01 15:05:16 by sraiha            #+#    #+#             */
+/*   Updated: 2024/11/04 14:37:51 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,5 @@ char    *ft_strnstr(const char *haystack, const char *needle, size_t len)
         haystack++;
     }
     return (NULL);
-}
-
-int main()
-{
-    char haystack[] = "This is word to find";
-    char needle[] = "word";
-    char *res;
-
-    res = ft_strnstr(haystack, needle, 9);
-
-    printf("%s", res);
-    return (0);
 }
 

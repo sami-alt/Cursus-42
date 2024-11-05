@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha.student@hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-01 14:45:53 by sraiha            #+#    #+#             */
-/*   Updated: 2024-11-01 14:45:53 by sraiha           ###   ########.fi       */
+/*   Created: 2024/11/01 14:45:53 by sraiha            #+#    #+#             */
+/*   Updated: 2024/11/04 15:23:06 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    *memchr(const void *s, int c, size_t n)
+void    *ft_memchr(const void *s, int c, size_t n)
 {
     unsigned char cc;
     size_t i;
@@ -29,3 +29,4 @@ void    *memchr(const void *s, int c, size_t n)
     }
     return (NULL);
 }
+
