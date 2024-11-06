@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:13:44 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/04 15:24:39 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/06 15:31:23 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_itoa(int n)
 
 	digit = "0123456789";
 	len = numberlen(n);
-	number = malloc(sizeof(char *) * len + 1);
+	number = malloc(sizeof(char) * (len + 1));
 	if (!number)
 		return (NULL);
 	number[0] = 0;

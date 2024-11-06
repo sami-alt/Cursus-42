@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:41:54 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/05 14:02:25 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/06 09:59:14 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ln = -ln;
 	}
 	if (ln <= 9)
-		ft_putnbr_fd(ln + '0', fd);
+		ft_putchar_fd(ln + '0', fd);
 	if (ln > 9)
 	{
 		ft_putnbr_fd(ln / 10, fd);

@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 15:05:16 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/05 10:49:21 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/06 14:06:04 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,19 @@
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t		i;
-	const char	*temp_haystack;
-	const char	*temp_needle;
+	size_t		j;
 
-	i = 0;
-	if (!*needle)
+	if (needle[0] == '\0')
 		return ((char *)haystack);
-	if (ft_strlen(needle) > len || !*haystack)
-		return (NULL);
-	while (i++ < len && *haystack)
+	i = 0;
+	while (haystack[i] != '\0' && i < len)
 	{
-		temp_haystack = haystack;
-		temp_needle = needle;
-		while (*temp_needle && *temp_haystack == *temp_needle && i < len)
-		{
-			temp_haystack++;
-			temp_needle++;
-			i++;
-		}
-		if (!*temp_needle)
-			return ((char *)haystack);
-		haystack++;
+		j = 0;
+		while (needle[j] && i + j < len && haystack[i + j] == needle[j])
+			j++;
+		if (!needle[j])
+			return ((char *)haystack + i);
+		i++;
 	}
 	return (NULL);
 }

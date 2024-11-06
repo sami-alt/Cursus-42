@@ -6,13 +6,13 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:08:50 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/05 15:40:27 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/06 14:59:18 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_len(const char *s, char c)
+static size_t	ft_word_count(const char *s, char c)
 {
 	size_t	len;
 
@@ -21,14 +21,12 @@ static size_t	ft_len(const char *s, char c)
 	{
 		if (*s != c)
 		{
-			len++;
+			++len;
 			while (*s && *s != c)
-				s++;
+				++s;
 		}
 		else
-		{
-			s++;
-		}
+			++s;
 	}
 	return (len);
 }
@@ -42,7 +40,7 @@ char	**ft_split(const char *s, char c)
 	i = 0;
 	if (!s)
 		return (0);
-	res = malloc(sizeof(char *) * ft_len(s, c) + 1);
+	res = malloc(sizeof(char *) * ft_word_count(s, c) + 1);
 	if (!res)
 		return (NULL);
 	while (*s)
@@ -52,12 +50,12 @@ char	**ft_split(const char *s, char c)
 			len = 0;
 			while (*s && *s != c && ++len)
 				s++;
-			res[i] = ft_substr(s - len, 0, len);
+			*res++ = ft_substr(s - len, 0, len);
 			i++;
 		}
 		else
 			++s;
 	}
-	res[i + 1] = NULL;
+	*res = NULL;
 	return (res - i);
 }

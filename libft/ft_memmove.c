@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:01:09 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/04 15:17:01 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/06 10:08:53 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	cdest = (char *)dest;
 	csrc = (char *)src;
-	if (!dest && !src)
-		return (NULL);
 	if (dest <= src)
 	{
 		while (n--)

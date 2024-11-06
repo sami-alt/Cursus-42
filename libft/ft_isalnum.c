@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:12:46 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/05 13:12:42 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/06 12:16:46 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,5 @@
 
 int	ft_isalnum(int c)
 {
-	if (((c >= 65 && 90 <= c) || (c >= 97 && 122 <= c)) || (c >= 48 && 57 <= c))
-		return (1);
-	else
-		return (0);
+	return (ft_isdigit(c) || ft_isalpha(c));
 }

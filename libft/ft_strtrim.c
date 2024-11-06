@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 11:13:33 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/05 11:20:45 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/06 12:23:42 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strtrim(char const *s1, const char *set)
 	char	*end;
 
 	if (!*s1 || !*set)
-		return (NULL);
+		return (ft_strdup(""));
 	start = (char *)s1;
 	end = ft_strlen(s1) + start;
 	while (*start && ft_inset(*start, set))

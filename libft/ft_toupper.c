@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:17:36 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/04 14:41:50 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/06 09:49:20 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	ft_toupper(int c)
 {
 	if (c >= 97 && c <= 122)
-		return ((char) c - 32);
-	return ((char)c);
+		return (c - 32);
+	return (c);
 }

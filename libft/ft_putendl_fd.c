@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:39:32 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/05 10:06:41 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/06 13:49:41 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	while (*s)
-		write(fd, s++, 1);
-	*s = '\n';
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

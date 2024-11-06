@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:14:11 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/05 15:44:43 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/06 12:15:40 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	i = 0;
 	while (s[i])
 	{
-		f(i , &s[i]);
+		f(i, &s[i]);
 		i++;
 	}	
 }
-

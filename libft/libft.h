@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:33:49 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/05 14:45:04 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/06 15:32:21 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strrchr(const char *s, int c);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
-int		ft_atoi(char *str); //needs work!!!
+int		ft_atoi(const char *str); //needs work!!!
 
 //additionals
 char	*ft_substr(const char *s, unsigned int start, size_t len);

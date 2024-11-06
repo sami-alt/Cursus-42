@@ -6,7 +6,7 @@
 #    By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 12:33:56 by sraiha            #+#    #+#              #
-#    Updated: 2024/11/05 15:53:08 by sraiha           ###   ########.fr        #
+#    Updated: 2024/11/06 09:45:53 by sraiha           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	ar -rcs ${NAME} ${OBJS}
 
-%.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
+# %.o: %.c
+# $(CC) $(FLAGS) -c $< -o $@
 
 clean:	
 	rm -f ${OBJS}
