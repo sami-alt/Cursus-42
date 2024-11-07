@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 11:13:33 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/07 14:37:20 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/07 14:38:06 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,4 @@ char	*ft_strtrim(char const *s1, const char *set)
 		end--;
 	res = ft_substr(start, 0, end - start);
 	return (res);
-}
-
-#include <stdio.h>
-int main()
-{
-	char test[] = "Hello world!";
-	char *res;
-
-	res = ft_strtrim(test, "");
-
-	printf("%s", res);
 }

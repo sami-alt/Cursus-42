@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:33:49 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/07 14:07:22 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/07 14:52:35 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-
 
 //libft
 int		ft_isalnum(int c);
