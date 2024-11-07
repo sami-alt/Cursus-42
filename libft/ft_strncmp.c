@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:27:44 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/06 12:16:07 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/07 09:54:52 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {	
-	if (n < 0)
+	if (n <= 0)
 		return (0);
 	while ((*s1 && (*s1 == *s2)) && --n)
 	{
