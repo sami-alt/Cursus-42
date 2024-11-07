@@ -6,11 +6,11 @@
 #    By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 12:33:56 by sraiha            #+#    #+#              #
-#    Updated: 2024/11/07 10:09:14 by sraiha           ###   ########.fr        #
+#    Updated: 2024/11/07 13:43:48 by sraiha           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -50,27 +50,28 @@ SRCS	= ft_atoi.c \
 		  ft_strtrim.c \
 		  ft_substr.c \
 		  ft_tolower.c \
-		  ft_toupper.c \
-		  ft_lstnew.c \
-		  ft_lstadd_front.c \
-		  ft_lstsize.c \
-		  ft_lstlast.c \
-		  ft_lstadd_back.c \
-		  ft_lstdelone.c \
-		  ft_lstclear.c \
-		  ft_lstiter.c \
-		  ft_lstmap.c 
+		  ft_toupper.c 
+		  
+BONUS 	= 	ft_lstadd_front_bonus.c \
+				ft_lstnew_bonus.c \
+		   		ft_lstsize_bonus.c \
+		  		ft_lstlast_bonus.c \
+		  		ft_lstadd_back_bonus.c \
+		  		ft_lstdelone_bonus.c \
+		  		ft_lstclear_bonus.c \
+		  		ft_lstiter_bonus.c \
+		  		ft_lstmap_bonus.c 
 
 OBJS = $(SRCS:.c=.o)
-# BONUS_OBJS = $(BONUS:.c=.o)
+BONUS_OBJS = $(BONUS:.c=.o)
 
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	ar rcs $@ $^
+	ar -r $@ $^
 
-# bonus: $(BONUS_OBJS)
-# 	ar rcs $(NAME) $^
+bonus: $(OBJS) $(BONUS_OBJS)
+	ar -r $(NAME) $^
 
 %.o: %.c libft.h
 	$(CC) $(FLAGS) -c $< -o $@
@@ -79,11 +80,8 @@ clean:
 	rm -f ${OBJS} $(BONUS_OBJS)
 
 fclean:
-		rm -f ${NAME} $(BONUS_OBJS)
+	rm -f ${NAME} $(BONUS_OBJS)
 
 re: fclean all
 
-so:
-	gcc -shared -o libft.so $(OBJS)
-
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

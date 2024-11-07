@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:08:50 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/07 12:26:06 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/07 12:59:49 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static size_t	ft_word_count(const char *s, char c)
 	{
 		if (*s != c)
 		{
-			++count;
+			count++;
 			while (*s && *s != c)
-				++s;
+				s++;
 		}
 		else
-			++s;
+			s++;
 	}
 	return (count);
 }
