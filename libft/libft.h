@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:33:49 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/07 14:52:35 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/11 10:13:15 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strtrim(char const *s1, const char *set);
 char	**ft_split(const char *s, char c);
-char	*ft_itoa(int n);
+char	*ft_itoa(long long n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
