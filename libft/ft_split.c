@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:08:50 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/07 12:59:49 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/11 09:27:23 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	ft_free_arr(char **arr, size_t words)
 	free(arr);
 }
 
-char	*one_word(const char **arr, char c)
+static char	*one_word(const char **arr, char c)
 {
 	const char		*ptr;
 	char			*new_word;

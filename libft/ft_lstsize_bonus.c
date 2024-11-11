@@ -6,15 +6,15 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 09:34:31 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/07 13:12:43 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/11 09:53:32 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+size_t	ft_lstsize(t_list *lst)
 {
-	int	size;
+	size_t	size;
 
 	size = 0;
 	while (lst)

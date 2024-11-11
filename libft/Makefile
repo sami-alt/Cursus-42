@@ -6,7 +6,7 @@
 #    By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 12:33:56 by sraiha            #+#    #+#              #
-#    Updated: 2024/11/07 14:57:49 by sraiha           ###   ########.fr        #
+#    Updated: 2024/11/11 09:29:43 by sraiha           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ clean:
 	rm -f ${OBJS} $(BONUS_OBJS)
 
 fclean:
-	rm -f ${NAME} $(BONUS_OBJS)
+	rm -f ${NAME}
 
 re: fclean all
 

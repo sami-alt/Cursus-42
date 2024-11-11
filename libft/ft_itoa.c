@@ -6,15 +6,15 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:13:44 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/06 15:31:23 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/11 09:52:18 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	numberlen(int n)
+static size_t	numberlen(long long n)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	if (n <= 0)
@@ -27,11 +27,11 @@ static int	numberlen(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long long n)
 {
-	char	*number;
-	int		len;
-	char	*digit;
+	char		*number;
+	size_t		len;
+	char		*digit;
 
 	digit = "0123456789";
 	len = numberlen(n);
