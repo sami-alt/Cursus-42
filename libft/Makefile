@@ -6,7 +6,7 @@
 #    By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 12:33:56 by sraiha            #+#    #+#              #
-#    Updated: 2024/11/11 09:29:43 by sraiha           ###   ########.fr        #
+#    Updated: 2024/11/12 10:14:50 by sraiha           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,8 @@ bonus: $(OBJS) $(BONUS_OBJS)
 
 %.o: %.c libft.h
 	$(CC) $(FLAGS) -c $< -o $@
+
+	gcc -shared -o libft.so $(OBJ)
 
 clean:	
 	rm -f ${OBJS} $(BONUS_OBJS)
