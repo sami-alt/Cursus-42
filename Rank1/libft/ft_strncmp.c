@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:27:44 by sraiha            #+#    #+#             */
-/*   Updated: 2024/11/07 09:54:52 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/11/15 12:35:29 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		s1++;
 		s2++;
 	}
-	if (n == 0)
-		return (0);
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
