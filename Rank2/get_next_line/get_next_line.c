@@ -12,12 +12,13 @@
 
 #include "get_next_line.h"
 #include <stdio.h>
-char    *clear_buffer(char *result, char *buffer)
+
+char    *clear_buffer(char *curr_buffer, char *temp_buffer)
 {
     char *temp;
 
-    temp = ft_strjoin(result, buffer);
-    free(result);
+    temp = ft_strjoin(curr_buffer, temp_buffer);
+    free(curr_buffer);
     return (temp);
 }
 
@@ -26,39 +27,23 @@ char    *get_line(char *buffer)
     char *line;
     size_t line_len;
 
-    printf("get_line called\n");
     line_len = 0;
-    printf("line_len set\n");
-    int check = buffer[line_len] != '\0' && buffer[line_len] != '\n';
-    printf("check done\n");
-    while (check)
-    {
+    if (!buffer[line_len])
+        return (NULL);
+    while (buffer[line_len] && buffer[line_len] != '\n')
         line_len++;
-        printf("check again\n");
-        check = buffer[line_len] != '\0' && buffer[line_len] != '\n';
-        printf("check again done\n");
-    //    printf("get 1");
-    }
-    printf("%ld", line_len);
-    printf("checks done\n");
-    printf("checks really done\n");
-    line = malloc((line_len ) * sizeof(char));
-    printf("malloc done\n");
-    printf("malloc really done\n");
+    line = ft_calloc((line_len + 2), sizeof(char));
     if (!line)
         return (NULL);
     line_len = 0;
-    while (buffer[line_len] != '\0' && buffer[line_len] != '\n')
+    while (buffer[line_len] && buffer[line_len] != '\n')
     {   
-     //   printf("get 2");
         line[line_len] = buffer[line_len];
         line_len++;
     }
-    if (buffer[line_len] != '\0' && buffer[line_len] == '\n')
-    {
+    if (buffer[line_len] && buffer[line_len] == '\n')
         line[line_len++] = '\n';
-     //   printf("get 3");
-    }
+    //printf("get line func: %s", line);
     return (line);
 }
 
@@ -76,7 +61,7 @@ char    *buffer_to_next_line(char *curr_buffer)
         free(curr_buffer);
         return (NULL);
     }
-    new_buffer = malloc((ft_strlen(curr_buffer) - i + 1) * sizeof(char));
+    new_buffer = ft_calloc((ft_strlen(curr_buffer) - i + 1), sizeof(char));
     i++;
     j = 0;
     while (curr_buffer[i])
@@ -92,7 +77,7 @@ char    *read_to_buffer(int fd, char *curr_buffer)
     if (!curr_buffer)
         curr_buffer = malloc(1);
 
-    buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+    buffer = ft_calloc((BUFFER_SIZE + 1) , sizeof(char));
     bytes_read = 1;
     while (bytes_read > 0)
     {
@@ -115,27 +100,14 @@ char    *get_next_line(int fd)
 {
     static char *buffer[MAX_FD];
     char        *line;
-    int  check;
 
     if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
         return (NULL);
     buffer[fd] = read_to_buffer(fd, buffer[fd]);
-    printf("1\n");
-    printf("before check\n");
-    check = !buffer[fd];
-    printf("after check\n");
-    if (check) {
-        printf("return null\n");
+    if (!buffer[fd]) 
         return (NULL);
-    }
-    printf("get line\n");
-    printf("fd %ld\n", fd);
-    char* buffer_fd = buffer[fd];
-    printf("got buffer fd\n");
-    line = get_line(buffer_fd);
-    printf("2\n");     
+    line = get_line(buffer[fd]);    
     buffer[fd] = buffer_to_next_line(buffer[fd]);
-    printf("3\n");
     return (line);    
 }
 
