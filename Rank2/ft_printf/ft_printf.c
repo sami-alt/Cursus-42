@@ -1,46 +1,41 @@
-#include "ft_printf.h"
+#include "libftprintf.h"
 
-void     ft_putchar(int c, size_t *counter)
-{
-    write(1, &c, 1);
-    *(counter)++;
-}
 
-void    ft_format(const char *c, size_t *counter){
-    if (*c == 'c')
+
+void    ft_format(va_list va, char *string,size_t *counter){
+    if (*string== 'c')
     {
         ft_putchar(va_arg(va, int), &counter);
-    } else if (*c == 's')
+    } else if (*string== 's')
     {
         ft_putstr(va_arg(va, char *), &counter);
-    } else if (*c == 'p')
+    } else if (*string== 'p')
     {
         ft_putptr(va_arg(va, void *), &counter);
-    } else if (*c == 'd' && c == 'i')    
+    } else if (*string== 'd' && string== 'i')    
     {
         ft_putnbr(va_arg(va, int), &counter);
-    } else if *(*c == 'u')
+    } else if (*string== 'u')
     {
-        ft_printunsigned(va_arg(va, unsigned int), &counter);
-    } else if (*c == 'x')
+        ft_putunsigned(va_arg(va, unsigned int), &counter);
+    } else if (*string== 'x')
     {
-        ft_printhex(va_arg(va, unsigned int), %counter, HEX_LOWER);
-    }  else if (*c == 'X')
+        ft_puthex(va_arg(va, unsigned int), &counter, HEX_LOWER);
+    }  else if (*string== 'X')
     {
-        ft_printhex(va_arg(va, unsigned int), HEX_UPPER);
-    } else if (*c == '%')
+        ft_puthex(va_arg(va, unsigned int), HEX_UPPER);
+    } else if (*string== '%')
     {
-        ft_printchar(va_arg(va, char *), &counter);
+        ft_putchar(va_arg(va, char *), &counter);
     }
 }
 
-int     ft_printf(const chat *string, ...)
+int     ft_printf(const char *string, ...)
 {   
-    va_lits     va;
-    int         counter;
+    va_list     va;
+    size_t         counter;
 
     va_start(va, string);
-    i = 0;
     while (*string)
     {
         if (*string == '%')
@@ -50,10 +45,10 @@ int     ft_printf(const chat *string, ...)
         } 
         else 
         {
-           ft_printchar(*str, &counter);
+           ft_printchar(*string, &counter);
         }
         string++;
     }
     va_end(va);
-    return (print_len);
+    return (counter);
 }
