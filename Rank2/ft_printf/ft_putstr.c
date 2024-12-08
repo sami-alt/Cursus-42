@@ -3,7 +3,7 @@
 void    ft_putstr(char *str, size_t *counter)
 {
     if (!str)
-        return (NULL);
+        str = "(null)";
     while(*str)
         ft_putchar(*str++, counter);
 
