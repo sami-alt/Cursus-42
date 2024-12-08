@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEST_LINE_H 
-# define GET_NEST_LINE_H
+#ifndef GET_NEXT_LINE_H 
+# define GET_NEXT_LINE_H
 
 #include <stdlib.h>
 //#include <io.h> // remember to remove

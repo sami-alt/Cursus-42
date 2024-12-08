@@ -25,7 +25,7 @@ char    *clear_buffer(char *curr_buffer, char *temp_buffer)
 char    *get_line(char *buffer)
 {
     char *line;
-    size_t line_len;
+    int line_len;
 
     line_len = 0;
     if (!buffer[line_len])
@@ -33,8 +33,6 @@ char    *get_line(char *buffer)
     while (buffer[line_len] && buffer[line_len] != '\n')
         line_len++;
     line = ft_calloc((line_len + 2), sizeof(char));
-    if (!line)
-        return (NULL);
     line_len = 0;
     while (buffer[line_len] && buffer[line_len] != '\n')
     {   
@@ -43,15 +41,15 @@ char    *get_line(char *buffer)
     }
     if (buffer[line_len] && buffer[line_len] == '\n')
         line[line_len++] = '\n';
-    //printf("get line func: %s", line);
+
     return (line);
 }
 
 char    *buffer_to_next_line(char *curr_buffer)
 {
+    int i;
+    int j;
     char *new_buffer;
-    size_t i;
-    size_t j;
 
     i = 0;
     while (curr_buffer[i] && curr_buffer[i] != '\n')
@@ -72,10 +70,10 @@ char    *buffer_to_next_line(char *curr_buffer)
 char    *read_to_buffer(int fd, char *curr_buffer)
 {
     char    *buffer;
-    size_t  bytes_read;
+    int  bytes_read;
 
     if (!curr_buffer)
-        curr_buffer = malloc(1);
+        curr_buffer = ft_calloc(1,1);
 
     buffer = ft_calloc((BUFFER_SIZE + 1) , sizeof(char));
     bytes_read = 1;
