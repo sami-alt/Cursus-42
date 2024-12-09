@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-12-07 11:19:31 by sraiha            #+#    #+#             */
-/*   Updated: 2024-12-07 11:19:31 by sraiha           ###   ########.fi       */
+/*   Created: 2024/12/07 11:19:31 by sraiha            #+#    #+#             */
+/*   Updated: 2024/12/09 13:56:09 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void    ft_put_hex(unsigned int num, size_t counter, char *base)
+void	ft_put_hex(unsigned int num, size_t *counter, char *base)
 {
-    char *str;
+	char	*str;
 
-    str = ft_put_num_by_base(num, base);
-    ft_putstr(str, counter);
-    free(str);
+	str = ft_put_num_by_base(num, base);
+	ft_putstr(str, counter);
+	free(str);
 }

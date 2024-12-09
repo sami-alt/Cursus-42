@@ -1,13 +1,25 @@
-#ifndef LIBFTPRINT_H
-# define LIBFTPRINT_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/09 14:07:28 by sraiha            #+#    #+#             */
+/*   Updated: 2024/12/09 14:16:17 by sraiha           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdarg.h>
-//#include <unistd.h>
-#include <io.h> 
-int     ft_printft(const char *, ...);
-void    ft_putchar(int c, size_t counter);
-void    ft_putstr(char *str, size_t counter);
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
+# include <stdarg.h>
+# include <unistd.h>
+# include <stddef.h>
+//#include <io.h> 
+int		ft_printf(const char *format, ...);
+void	ft_putchar(int c, size_t counter);
+void	ft_putstr(char *str, size_t counter);
 
 # define HEX_UPPER "0123456789ABCDEF"
 # define HEX_LOWER "0123456789abcdef"

@@ -1,13 +1,25 @@
-#include "libftprintf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/09 13:58:14 by sraiha            #+#    #+#             */
+/*   Updated: 2024/12/09 14:04:41 by sraiha           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    ft_putptr(void *ptr, size_t counter)
+#include "ft_printf.h"
+
+void	ft_putptr(void *ptr, size_t *counter)
 {
-    unsigned long ptr_adr;
-    char *adr;
+	unsigned long	ptr_adr;
+	char			*adr;
 
-    ptr_adr = (unsigned long)ptr;
-    ft_putptr("0x", counter);
-    adr = ft_put_num_by_base(ptr_adr ,HEX_LOWER);
-    ft_putstr(adr, counter);
-    free(adr);
+	ptr_adr = (unsigned long)ptr;
+	ft_putstr("0x", counter);
+	adr = ft_put_num_by_base(ptr_adr, HEX_LOWER);
+	ft_putstr(adr, counter);
+	free(adr);
 }
