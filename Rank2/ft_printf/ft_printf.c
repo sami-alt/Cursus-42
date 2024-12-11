@@ -6,12 +6,11 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:29:26 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/11 15:17:49 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/12/11 15:55:24 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void	ft_format(va_list va, char *string, size_t *counter)
 {	

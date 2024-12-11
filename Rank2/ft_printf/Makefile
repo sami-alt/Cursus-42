@@ -6,7 +6,7 @@
 #    By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/09 14:39:00 by sraiha            #+#    #+#              #
-#    Updated: 2024/12/11 14:57:11 by sraiha           ###   ########.fr        #
+#    Updated: 2024/12/11 15:51:49 by sraiha           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
-NAME = libftprint.a
+NAME = libftprintf.a
 
 SRCS =  ft_printf.c \
 		ft_put_num_by_base.c \
