@@ -6,14 +6,14 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:50:38 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/09 13:53:53 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/12/10 12:38:08 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(int c, size_t *counter)
+void	ft_putchar(char c, size_t *counter)
 {
 	write(1, &c, 1);
-	*(counter)++;
+	(*counter)++;
 }

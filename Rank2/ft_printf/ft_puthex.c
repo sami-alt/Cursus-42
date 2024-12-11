@@ -6,13 +6,13 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 11:19:31 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/09 13:56:09 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/12/10 11:52:03 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_put_hex(unsigned int num, size_t *counter, char *base)
+void	ft_puthex(unsigned int num, size_t *counter, char *base)
 {
 	char	*str;
 

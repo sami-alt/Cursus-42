@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-20 10:37:04 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/09 12:06:05 by sraiha           ###   ########.fr       */
+/*   Created: 2024/11/20 10:37:04 by sraiha            #+#    #+#             */
+/*   Updated: 2024/12/11 13:37:20 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*clear_buffer(char *curr_buffer, char *temp_buffer)
 {

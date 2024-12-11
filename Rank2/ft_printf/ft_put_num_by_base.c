@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 11:20:26 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/09 13:51:01 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/12/11 15:18:45 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 int	ft_strlen(char *str)
 {
-	int	len;
+	size_t	len;
 
+	if (!str)
+		return (0);
 	len = 0;
 	while (str[len])
 		len++;
@@ -24,11 +26,11 @@ int	ft_strlen(char *str)
 
 size_t	ft_num_len(unsigned long nb, char *base)
 {
-	unsigned long long	len;
-	size_t				base_len;
+	size_t				len;
+	unsigned long long	base_len;
 
+	len = 1;
 	base_len = ft_strlen(base);
-	nb = 1;
 	while (nb >= base_len)
 	{
 		nb /= base_len;
@@ -41,7 +43,7 @@ void	ft_bzero(void *s, size_t n)
 {
 	unsigned char	*ptr;
 
-	ptr = (unsigned char)s;
+	ptr = (unsigned char *)s;
 	while (n > 0)
 	{
 		*ptr = 0;
@@ -62,7 +64,7 @@ void	*ft_calloc(size_t count, size_t size)
 }
 
 char	*ft_put_num_by_base(unsigned long long num, char *base)
-{
+{	
 	char		*number;
 	size_t		num_len;
 	size_t		base_size;
@@ -72,9 +74,9 @@ char	*ft_put_num_by_base(unsigned long long num, char *base)
 	number = ft_calloc((num_len + 1), sizeof(char));
 	while (num_len)
 	{
-		num--;
+		num_len--;
 		number[num_len] = base[num % base_size];
 		num /= base_size;
-	}
+	}	
 	return (number);
 }
