@@ -81,6 +81,7 @@ char	*read_to_buffer(int fd, char *curr_buffer)
 		if (bytes_read == -1)
 		{
 			free(buffer);
+			free(curr_buffer);
 			return (NULL);
 		}
 		buffer[bytes_read] = 0;
@@ -97,7 +98,7 @@ char	*get_next_line(int fd)
 	static char	*buffer[MAX_FD];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > MAX_FD)
 		return (NULL);
 	buffer[fd] = read_to_buffer(fd, buffer[fd]);
 	if (!buffer[fd])

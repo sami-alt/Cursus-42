@@ -6,16 +6,19 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:52:48 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/09 13:53:03 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/12/13 17:09:40 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(char *str, size_t *counter)
+void	ft_putstr(char *str, int *counter)
 {
 	if (!str)
 		str = "(null)";
+	printf("AAAa");
 	while (*str)
+	{
 		ft_putchar(*str++, counter);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:07:28 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/11 15:17:15 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/12/13 15:58:58 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+#include <stdio.h>
+
 int		ft_printf(const char *format, ...);
-void	ft_putchar(char c, size_t *counter);
-void	ft_putstr(char *str, size_t *counter);
-void	ft_putptr(void *ptr, size_t *counter);
-void	ft_putnbr(int nbr, size_t *counter);
-void	ft_putunsigned(unsigned int nbr, size_t *counter);
-void	ft_puthex(unsigned int num, size_t *counter, char *base);
+void	ft_putchar(char c, int *counter);
+void	ft_putstr(char *str, int *counter);
+void	ft_putptr(void *ptr, int *counter);
+void	ft_putnbr(int nbr, int *counter);
+void	ft_putunsigned(unsigned int nbr, int *counter);
+void	ft_puthex(unsigned int num, int *counter, char *base);
 char	*ft_put_num_by_base(unsigned long long num, char *base);
 
 # define HEX_UPPER "0123456789ABCDEF"

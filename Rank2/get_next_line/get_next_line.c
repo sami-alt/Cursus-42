@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:37:04 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/11 13:37:20 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/12/12 14:47:09 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ char	*read_to_buffer(int fd, char *curr_buffer)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
-		{
+		{	
+			free(curr_buffer);
 			free(buffer);
 			return (NULL);
 		}
@@ -97,7 +98,7 @@ char	*get_next_line(int fd)
 	static char	*buffer[MAX_FD];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > MAX_FD)
 		return (NULL);
 	buffer[fd] = read_to_buffer(fd, buffer[fd]);
 	if (!buffer[fd])

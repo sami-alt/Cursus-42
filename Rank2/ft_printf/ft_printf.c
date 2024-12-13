@@ -6,13 +6,13 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:29:26 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/11 15:55:24 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/12/13 17:36:15 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_format(va_list va, char *string, size_t *counter)
+void	ft_format(va_list va, char *string, int *counter)
 {	
 	if (*string == 'c')
 		ft_putchar(va_arg(va, int), counter);
@@ -30,28 +30,34 @@ void	ft_format(va_list va, char *string, size_t *counter)
 		ft_puthex(va_arg(va, unsigned int), counter, HEX_UPPER);
 	else if (*string == '%')
 		ft_putchar(*string, counter);
+	else 
+		*counter = -1;
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	va;
-	size_t	counter;
+	int		counter;
 
 	if (!format)
 		return (-1);
-	counter = 0;
+	counter = 0; 
 	va_start(va, format);
 	while (*format)
-	{
+	{	
+
 		if (*format == '%')
 		{
 			format++;
 			ft_format(va, (char *)format, &counter);
 		}
 		else
+		{
 			ft_putchar(*format, &counter);
+		}
 		format++;
 	}
 	va_end(va);
+	printf("%d", counter);
 	return (counter);
 }
