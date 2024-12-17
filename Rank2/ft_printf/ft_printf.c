@@ -58,6 +58,5 @@ int	ft_printf(const char *format, ...)
 		format++;
 	}
 	va_end(va);
-	printf("%d", counter);
 	return (counter);
 }

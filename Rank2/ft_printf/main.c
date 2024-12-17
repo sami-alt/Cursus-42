@@ -33,5 +33,9 @@ int main()
 
 	assert(ft_printf("Multiple formats: %%, %i, %s\n", 42, "Hello, World!") == printf("Multiple formats: %%, %i, %s\n", 42, "Hello, World!"));
 
+	printf("test % %\n");
+	printf("% %\n");
+	printf("test f % %\n");
+	ft_printf("% %\n");
 	return (0);
 }

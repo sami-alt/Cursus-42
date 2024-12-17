@@ -16,7 +16,6 @@ void	ft_putstr(char *str, int *counter)
 {
 	if (!str)
 		str = "(null)";
-	printf("AAAa");
 	while (*str)
 	{
 		ft_putchar(*str++, counter);

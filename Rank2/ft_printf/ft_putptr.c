@@ -14,10 +14,10 @@
 
 void	ft_putptr(void *ptr, int *counter)
 {
-	unsigned long	ptr_adr;
+	uintptr_t		ptr_adr;
 	char			*adr;
 	if (ptr){
-		ptr_adr = (unsigned long)ptr;
+		ptr_adr = (uintptr_t)ptr;
 		ft_putstr("0x", counter);
 		adr = ft_put_num_by_base(ptr_adr, HEX_LOWER);
 		ft_putstr(adr, counter);
