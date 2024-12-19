@@ -1117,11 +1117,11 @@ void ft_test_for_percentage(void)
 
 	printf(" 05. %c character followed by some regular characters\n",'%');
     printf("      standard : ");
-    printf_return = printf("%help");
+    printf_return = printf("%jhelp");
     printf("\n        - return value : %d \n", printf_return);
     printf("      custom   : ");
     fflush(stdout);
-    ft_printf_return = ft_printf("%help");
+    ft_printf_return = ft_printf("%jhelp");
     printf("\n        - return value : %d \n", ft_printf_return);
 
 	printf(" 06. Invalid flag : %ck\n", '%');
