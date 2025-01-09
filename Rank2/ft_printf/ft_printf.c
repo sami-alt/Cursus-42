@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:29:26 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/23 11:42:33 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/12/13 17:36:15 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,14 @@ void	ft_format(va_list va, char *string, int *counter)
 	else if (*string == 'X')
 		ft_puthex(va_arg(va, unsigned int), counter, HEX_UPPER);
 	else if (*string == '%')
+	{	
 		ft_putchar(*string, counter);
+	}
+	// else {
+	// 	ft_putchar('%', counter);
+	// 	if (*(string + 2) == ' ')
+	// 		ft_putchar(*string, counter);
+	// }
 	else
 		*counter = -1;
 }
@@ -41,21 +48,39 @@ int	ft_printf(const char *format, ...)
 
 	if (!format)
 		return (-1);
-	counter = 0;
+	counter = 0; 
 	va_start(va, format);
 	while (*format)
 	{	
-		if (*format == '%')
+		if (*format == '%' && *(format + 1))
 		{
 			format++;
 			ft_format(va, (char *)format, &counter);
 		}
-		else
+		if (*format == '%' && *(format + 1) == '\0' && counter == 0)
 		{
-			ft_putchar(*format, &counter);
+			ft_putchar('%', &counter)
+			counter = -1;
 		}
+		else 
+			ft_putchar(*format, &counter);
 		format++;
 	}
 	va_end(va);
+	// 	while (*format)
+	// {	
+
+	// 	if (*format == '%')
+	// 	{
+	// 		format++;
+	// 		ft_format(va, (char *)format, &counter);
+	// 	}
+	// 	else
+	// 	{
+	// 		ft_putchar(*format, &counter);
+	// 	}
+	// 	format++;
+	// }
+	
 	return (counter);
 }

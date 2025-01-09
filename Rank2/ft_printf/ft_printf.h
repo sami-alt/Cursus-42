@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:07:28 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/23 11:45:53 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/12/13 15:58:58 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdint.h>
+
+#include <stdio.h>
 
 int		ft_printf(const char *format, ...);
 void	ft_putchar(char c, int *counter);

@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:37:04 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/23 13:41:03 by sraiha           ###   ########.fr       */
+/*   Updated: 2024/12/12 14:47:09 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ char	*get_line(char *buffer)
 	while (buffer[line_len] && buffer[line_len] != '\n')
 		line_len++;
 	line = ft_calloc((line_len + 2), sizeof(char));
-	if (!line)
-		return (NULL);
 	line_len = 0;
 	while (buffer[line_len] && buffer[line_len] != '\n')
 	{
@@ -60,8 +58,6 @@ char	*buffer_to_next_line(char *curr_buffer)
 		return (NULL);
 	}
 	new_buffer = ft_calloc((ft_strlen(curr_buffer) - i + 1), sizeof(char));
-	if (!new_buffer)
-		return (NULL);
 	i++;
 	j = 0;
 	while (curr_buffer[i])
