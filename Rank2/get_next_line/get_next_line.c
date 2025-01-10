@@ -6,11 +6,11 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:37:04 by sraiha            #+#    #+#             */
-/*   Updated: 2024/12/12 14:47:09 by sraiha           ###   ########.fr       */
+/*   Updated: 2025/01/03 13:07:08 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 char	*clear_buffer(char *curr_buffer, char *temp_buffer)
 {
@@ -32,6 +32,8 @@ char	*get_line(char *buffer)
 	while (buffer[line_len] && buffer[line_len] != '\n')
 		line_len++;
 	line = ft_calloc((line_len + 2), sizeof(char));
+	if (!line)
+		return (NULL);
 	line_len = 0;
 	while (buffer[line_len] && buffer[line_len] != '\n')
 	{
@@ -58,6 +60,8 @@ char	*buffer_to_next_line(char *curr_buffer)
 		return (NULL);
 	}
 	new_buffer = ft_calloc((ft_strlen(curr_buffer) - i + 1), sizeof(char));
+	if (!new_buffer)
+		return (NULL);
 	i++;
 	j = 0;
 	while (curr_buffer[i])
@@ -74,6 +78,8 @@ char	*read_to_buffer(int fd, char *curr_buffer)
 	if (!curr_buffer)
 		curr_buffer = ft_calloc(1, 1);
 	buffer = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
+	if (!curr_buffer || !buffer)
+		return (NULL);
 	bytes_read = 1;
 	while (bytes_read > 0)
 	{
