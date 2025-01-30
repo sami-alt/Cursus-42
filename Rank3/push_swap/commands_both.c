@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   swap_both.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-01-13 11:47:34 by sraiha            #+#    #+#             */
-/*   Updated: 2025-01-13 11:47:34 by sraiha           ###   ########.fi       */
+/*   Created: 2025-01-13 11:44:53 by sraiha            #+#    #+#             */
+/*   Updated: 2025-01-13 11:44:53 by sraiha           ###   ########.fi       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-
-void    push_swap(char *input)
+void    ss(node_list *a, node_list *b)
 {
-    while (*input)
-    {
-        printf("%c", *input);
-        input++;
-    }
+
 }
 
-int     main(int argc, char **argv)
-{   
-    *argv += 1;
-    push_swap(*argv);
-    return (0);
+void    rr(node_list *a, node_list *b)
+{
+
+}
+
+void    rrr(node_list *a, node_list *b)
+{
+    
 }
