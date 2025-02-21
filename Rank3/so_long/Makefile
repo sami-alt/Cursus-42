@@ -22,7 +22,7 @@ MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 
 NAME = so_long 
 
-SRC = src/so_long.c \
+SRC = src/so_long.c
 
 OBJS = $(SRC:.c=.o) 
 
