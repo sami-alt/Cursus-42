@@ -9,7 +9,6 @@
 /*   Updated: 2025-01-30 11:14:09 by sraiha           ###   ########.fi       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "minitalk.h"
 #include "./Rank1/libft.h"
 #include <signal.h>
