@@ -20,13 +20,15 @@ MLX_DIR = ./mlx
 
 MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 
+LIBFT_DIR = ./libft
+
 NAME = so_long 
 
 SRC = src/so_long.c
 
 OBJS = $(SRC:.c=.o) 
 
-all:$(MLX_LIB) $(NAME)
+all:$(MLX_LIB) $(NAME) 
 
 $(NAME):$(OBJS)
     $(CC) $(CFLAGS)  -o  $(NAME)  $(OBJS)  $(MLXFLAGS)
@@ -38,6 +40,9 @@ OBJS = $(SRCS:.c=.o)
 
 $(MLX_LIB):
 	@make -C $(MLX_DIR)
+
+$(LIBFT):
+	@make -C $(LIBFT_DIR)
 
 clean:
 	$(RM) $(RMFLAG) $(OBJS)
