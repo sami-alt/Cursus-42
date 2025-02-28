@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:19:43 by sraiha            #+#    #+#             */
-/*   Updated: 2025/02/27 15:04:26 by sraiha           ###   ########.fr       */
+/*   Updated: 2025/02/28 12:55:09 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void 	ft_move(so_long_t *game_info, int x, int y)
 	{
 		exit(EXIT_SUCCESS);
 	}
-	ft_printf("Steps taken to victory: %d", game_info->step_count);
+	printf("Steps taken to victory: %d", game_info->step_count);
 }
 
 int 	ft_key_hooks(int key_code, so_long_t *game_info)
 {
 	if (key_code == 53)
-		ft_end_game(game_info);
-	if (key_code == 13 || key_code ==126)
+		ft_quit(game_info);
+	if (key_code == 13 || key_code == 126)
 	{
 		if (game_info->playable[game_info->player_x][game_info->player_y] != '1')
 			ft_move(game_info, game_info->player_x - 1, game_info->player_y);

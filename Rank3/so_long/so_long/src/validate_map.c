@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-26 12:33:16 by sraiha            #+#    #+#             */
-/*   Updated: 2025-02-26 12:33:16 by sraiha           ###   ########.fi       */
+/*   Created: 2025/02/26 12:33:16 by sraiha            #+#    #+#             */
+/*   Updated: 2025/02/28 13:07:50 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int     ft_check_map_chars(char const *line)
 {
@@ -35,7 +35,7 @@ int     ft_check_map_chars(char const *line)
     return (0);
 }
 
-int     ft_validate_player_collectibles_exit(so_long_t game_info)
+int     ft_validate_player_collectibles_exit(so_long_t *game_info)
 {
     game_info->collectible_count = 0;
     game_info->exit_count = 0;
@@ -43,7 +43,7 @@ int     ft_validate_player_collectibles_exit(so_long_t game_info)
     game_info->index = 0;
     if (!game_info->map_raw)
         return (-1);
-    while (game_info->map_raw[index] != '\0')
+    while (game_info->map_raw[game_info->index] != '\0')
     {
         if(game_info->map_raw[game_info->index]  == COLLECTIBLE)
             game_info->collectible_count++;
@@ -53,7 +53,7 @@ int     ft_validate_player_collectibles_exit(so_long_t game_info)
             game_info->player_count++;
         game_info->index++;
     }
-    if(game_info->collectibel_count < 1)
+    if(game_info->collectible_count < 1)
         return(write(2, "Error\nToo few collectibles\n", 28), 1);
     if(game_info->exit_count != 1)
         return (write(2, "Error\nInvalid exit count\n", 26), 1);
@@ -62,13 +62,13 @@ int     ft_validate_player_collectibles_exit(so_long_t game_info)
     return (0);
 }
 
-int     ft_check_shape(so_long_t game_info)
+int     ft_check_shape(so_long_t *game_info)
 {
     game_info->width = ft_strlen(game_info->map[0]);
     game_info->index = 1;
     while(game_info->map[game_info->index] != NULL)
     {
-        if(ft_strlen(game_info->map[game_info->indez]) != game_info->width)
+        if(ft_strlen(game_info->map[game_info->index]) != game_info->width)
             return (write(2, "Error\nInvalid map length", 26), 1);
         game_info->index++;
     }   
@@ -84,11 +84,11 @@ int     ft_line_count(char **arr)
     return (rows);
 }
 
-int     ft_wall_check(so_long_t game_info)
+int     ft_wall_check(so_long_t *game_info)
 {
     game_info->index = 0;
-    game_info->heigth = ft_line_count(game_info->map);
-    while(game_info->[0][game_info->index] != '\0')
+    game_info->height = ft_line_count(game_info->map);
+    while(game_info->map[0][game_info->index] != '\0')
     {
         if(game_info->map[0][game_info->index] != WALL)
             return (write(2, "Error\nInvalid map - wall error\n", 33), 1);

@@ -6,11 +6,11 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:59:47 by sraiha            #+#    #+#             */
-/*   Updated: 2025/02/27 14:38:16 by sraiha           ###   ########.fr       */
+/*   Updated: 2025/02/28 13:03:22 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int    ft_is_winniable(so_long_t *game_info)
 {
@@ -96,14 +96,14 @@ int     ft_player_location(so_long_t *game_info)
         find_playable(game_info);
     if(ft_is_winniable(game_info) != 0)
         return (1);
-
+    return (0);
 }
 
 int     ft_error(so_long_t *game_info)
 {
     if(ft_check_map_chars(game_info->map_raw) == 1)
         return (1);
-    if(ft_check_char_ammount(game_info == 1))
+    if(ft_validate_player_collectibles_exit(game_info) == 1)
         return (1);
     if(ft_check_shape(game_info) == 1)
         return (1);

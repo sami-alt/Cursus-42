@@ -1,56 +1,60 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Makefile                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-13 10:30:15 by sraiha            #+#    #+#             */
-/*   Updated: 2025-02-13 10:30:15 by sraiha           ###   ########.fi       */
-/*                                                                            */
-/* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/02/13 10:30:15 by sraiha            #+#    #+#              #
+#    Updated: 2025/02/28 13:15:22 by sraiha           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = so_long
+SRC_DIR = src/
+SRC_FILES = $(addprefix $(SRC_DIR), $(SRC))
+
+OBJS = $(SRC_FILES:.c=.o)
 
 CC = cc
-
-CFLAGS = -g -Wall -Werror -Wextra 
-
-MLXFLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
-
-MLX_DIR = ./mlx
-
-MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
+CFLAGS = -Wall -Werror  -Wextra
+INCLUDE = -I include
+RM = rm -rf
 
 LIBFT_DIR = ./libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-NAME = so_long 
+MLXFLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_DIR = ./mlx
+MLX = $(MLX_DIR)/libmlx_Linux.a
 
-SRC = src/so_long.c
+SRC = so_long.c \
+	  draw_map.c \
+	  free_game.c \
+	  keys.c \
+	  run_game.c \
+	  error.c \
+	  validate_map.c
 
-OBJS = $(SRC:.c=.o) 
-
-all:$(MLX_LIB) $(NAME) 
-
-$(NAME):$(OBJS)
-    $(CC) $(CFLAGS)  -o  $(NAME)  $(OBJS)  $(MLXFLAGS)
+all: $(NAME)
 
 %.o: %.c
-    $(CC) $(MXLFLAGS) -c $<  -o $@
+		$(CC) $(CFLAGS) -c $< -o $@
 
-OBJS = $(SRCS:.c=.o)
-
-$(MLX_LIB):
-	@make -C $(MLX_DIR)
-
-$(LIBFT):
-	@make -C $(LIBFT_DIR)
+$(NAME) : $(OBJS)
+	@make -C libft
+	@make -C mlx
+	$(CC) $(CFLAGS) $(OBJS) $(INCLUDE) $(LIBFT) $(MLX) $(MLXFLAGS) -o $(NAME)
 
 clean:
-	$(RM) $(RMFLAG) $(OBJS)
+	@make clean -C $(LIBFT_DIR)
+	@make clean -C $(MLX_DIR)
+	rm -f $(OBJS) 
 
-fclean: clean
-	$(RM) $(RMFLAG) $(NAME)
-	if [ -d "./mlx" ]; then make -C $(MLX_DIR) clean; fi
+
+fclean:
+	rm  -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean run fclean re 
+.PHONY: all bonus clean fclean re
