@@ -51,12 +51,16 @@ void    ft_run(so_long_t *game_info)
     width = game_info->width;
     height = game_info->height;
 
+    width = 10;
+    height = 10;
+
+    printf("game run %d, %d\n", width, height);
     game_info->mlx = mlx_init();
     game_info->mlx_win = mlx_new_window(game_info->mlx, width * 30, height * 30, "-so-long-");
-    game_info->img = mlx_new_image(game_info->mlx, height * 30, width * 30);
-    ft_graphics(game_info);
-    mlx_loop_hook(game_info->mlx, ft_draw_images, game_info);
-    mlx_key_hook(game_info->mlx_win, ft_key_hooks, game_info);
-    // mlx_hook(game_info->mlx_win, 17, 0 ,ft_quit, game_info);
+    //game_info->img = mlx_new_image(game_info->mlx, height * 30, width * 30);
+    //ft_graphics(game_info);
+    //mlx_loop_hook(game_info->mlx, ft_draw_images, game_info);
+    //mlx_key_hook(game_info->mlx_win, ft_key_hooks, game_info);
+    mlx_hook(game_info->mlx_win,2, 1L<<0, ft_quit, game_info);
     mlx_loop(game_info->mlx);
 }
