@@ -69,7 +69,7 @@ int     ft_check_shape(so_long_t *game_info)
     while(game_info->map[game_info->index] != NULL)
     {
         if(ft_strlen(game_info->map[game_info->index]) != game_info->width)
-            return (write(2, "Error\nInvalid map length", 26), 1);
+            return (write(2, "Error\nInvalid map length", 25), 1);
         game_info->index++;
     }   
     return (0);
@@ -77,7 +77,6 @@ int     ft_check_shape(so_long_t *game_info)
 int     ft_line_count(char **arr)
 {
     int     rows;
-
     rows  = 0;
     while(arr[rows] != NULL)
         rows++;
@@ -85,27 +84,32 @@ int     ft_line_count(char **arr)
 }
 
 int     ft_wall_check(so_long_t *game_info)
-{
+{   
+    printf("Wall check\n");
     game_info->index = 0;
     game_info->height = ft_line_count(game_info->map);
+    printf("map rows %ld\n", game_info->height);
     while(game_info->map[0][game_info->index] != '\0')
     {
-        if(game_info->map[0][game_info->index] != WALL)
-            return (write(2, "Error\nInvalid map - wall error\n", 33), 1);
+        if(game_info->map[0][game_info->index++] != WALL)
+            return (write(2, "Error\nInvalid map - wall error\n", 32), 1);
     }
+    
+    
     game_info->index = 0;
     while(game_info->map[game_info->height - 1][game_info->index] != '\0')
     {
-        if(game_info->map[game_info->height - 1][game_info->index] != WALL)
-            return(write(2, "Error\nInvalid map - wall error\n", 33), 1);
+        if(game_info->map[game_info->height - 1][game_info->index++] != WALL)
+            return(write(2, "Error\nInvalid map - wall error\n", 32), 1);
     }
+    
     game_info->index = 0;
     while(game_info->index < game_info->height)
     {
         if (game_info->map[game_info->index][0] != WALL)
-            return(write(2, "Error\nInvalid map - wall error\n", 33), 1);
+            return(write(2, "Error\nInvalid map - wall error\n", 32), 1);
         if (game_info->map[game_info->index][game_info->width -1] != WALL)
-            return(write(2, "Error\nInvalid map - wall error\n", 33), 1);
+            return(write(2, "Error\nInvalid map - wall error\n", 32), 1);
         game_info->index++;
     }
     return (0);

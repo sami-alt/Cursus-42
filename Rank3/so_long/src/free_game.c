@@ -34,5 +34,5 @@ int ft_quit(so_long_t *game_info)
     mlx_destroy_window(game_info->mlx, game_info->mlx_win);
     ft_free_game(game_info);
     exit(EXIT_SUCCESS);
-    return (1);
+    
 }

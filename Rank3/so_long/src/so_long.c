@@ -57,11 +57,11 @@ int main(int ac, char **ag)
 	read(game_info.fd, game_info.map_raw, game_info.map_raw_len);
 	game_info.map = ft_split(game_info.map_raw, '\n');
 	game_info.playable = ft_split(game_info.map_raw, '\n');
-	//printf("%s", game_info.map[0]);
-	//if (ft_error(&game_info) == 0)
-	ft_run(&game_info);
-	// else
-	// 	ft_quit(&game_info);
+
+	if (ft_error(&game_info) == 0)
+		ft_run(&game_info);
+	else
+		ft_quit(&game_info);
 	
 	return (0);
 }
