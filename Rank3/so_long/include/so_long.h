@@ -74,7 +74,6 @@ int     ft_player_location(so_long_t *game_info);
 void	ft_draw_player(so_long_t *game_info);
 void    ft_draw_playable(so_long_t *game_info);
 void    ft_draw_background(so_long_t *game_info);
-void    ft_quit(so_long_t *game_info);
 void    ft_free_game(so_long_t *game_info);
 void 	ft_move(so_long_t *game_info, int x, int y);
 int 	ft_key_hooks(int key_code, so_long_t *game_info);
@@ -86,6 +85,7 @@ int     ft_wall_check(so_long_t *game_info);
 int    ft_draw_images(so_long_t *game_info);
 void    ft_graphics(so_long_t *game_info);
 void    ft_run(so_long_t *game_info);
+int    ft_quit(so_long_t *game_info);
 
 
 
