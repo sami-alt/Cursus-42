@@ -43,7 +43,6 @@ size_t		ft_count_fd(int fd)
 int main(int ac, char **ag)
 {	
 	so_long_t game_info;
-	printf("Game on\n");
 	if (ac != 2)
 		return (write(1, "Invalid argument count", 22),-1);
 	game_info.fd = open(ag[1], O_RDONLY);
