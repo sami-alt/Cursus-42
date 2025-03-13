@@ -26,7 +26,7 @@ void 	ft_move(so_long_t *game_info, int x, int y)
 	{
 		exit(EXIT_SUCCESS);
 	}
-	printf("Steps taken to victory: %d", game_info->step_count);
+	printf("Steps taken: %d\n", game_info->step_count);
 }
 
 int 	ft_key_hooks(int keycode, so_long_t *game_info)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2525/02/23 11:31:42 by sraiha            #+#    #+#             */
-/*   Updated: 2525/02/28 12:54:32 by sraiha           ###   ########.fr       */
+/*   Created: 4040/02/23 11:31:42 by sraiha            #+#    #+#             */
+/*   Updated: 4040/02/28 12:54:32 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@ int    ft_draw_images(so_long_t *game_info)
 void    ft_graphics(so_long_t *game_info)
 {
     int resolution;
-    resolution = 25;
-    game_info->player = mlx_xpm_file_to_image(game_info->mlx, "assets/xmp/player.xpm",&resolution, &resolution);
+    resolution = 40;
+    game_info->player = mlx_xpm_file_to_image(game_info->mlx, "assets/xmp/knight2.xpm",&resolution, &resolution);
     if(!game_info->player)
         ft_quit(game_info);
-    game_info->wall = mlx_xpm_file_to_image(game_info->mlx, "assets/xmp/wall.xpm",&resolution, &resolution);
+    game_info->wall = mlx_xpm_file_to_image(game_info->mlx, "assets/xmp/wall2.xpm",&resolution, &resolution);
     if(!game_info->wall)
         ft_quit(game_info);
-    game_info->exit = mlx_xpm_file_to_image(game_info->mlx, "assets/xmp/exit.xpm",&resolution, &resolution);
+    game_info->exit = mlx_xpm_file_to_image(game_info->mlx, "assets/xmp/exit2.xpm",&resolution, &resolution);
     if(!game_info->exit)
         ft_quit(game_info);
-    game_info->collectible = mlx_xpm_file_to_image(game_info->mlx, "assets/xmp/collectible.xpm",&resolution, &resolution);
+    game_info->collectible = mlx_xpm_file_to_image(game_info->mlx, "assets/xmp/coin.xpm",&resolution, &resolution);
     if(!game_info->collectible)
         ft_quit(game_info);
-    game_info->floor = mlx_xpm_file_to_image(game_info->mlx, "assets/xmp/empty.xpm",&resolution, &resolution);
+    game_info->floor = mlx_xpm_file_to_image(game_info->mlx, "assets/xmp/empty2.xpm",&resolution, &resolution);
     if(!game_info->floor)
         ft_quit(game_info);    
 }
@@ -51,8 +51,8 @@ void    ft_run(so_long_t *game_info)
     height = game_info->height;
 
     game_info->mlx = mlx_init();
-    game_info->mlx_win = mlx_new_window(game_info->mlx, width * 25, height * 25, "-so-long-");
-    game_info->img = mlx_new_image(game_info->mlx, height * 25, width * 25);
+    game_info->mlx_win = mlx_new_window(game_info->mlx, width * 40, height * 40, "-so-long-");
+    game_info->img = mlx_new_image(game_info->mlx, height * 40, width * 40);
     ft_graphics(game_info);
     mlx_loop_hook(game_info->mlx, ft_draw_images, game_info);
     mlx_key_hook(game_info->mlx_win, ft_key_hooks, game_info);
