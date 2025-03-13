@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-01-13 11:38:31 by sraiha            #+#    #+#             */
-/*   Updated: 2025-01-13 11:38:31 by sraiha           ###   ########.fi       */
+/*   Created: 2024/12/09 13:50:38 by sraiha            #+#    #+#             */
+/*   Updated: 2024/12/23 11:46:14 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H_
-# define PUSH_SWAP_H
+#include "ft_printf.h"
 
-typedef struct piles_s
-{
-    int *pile_a;
-    int *pile_b
-    int size_a;
-    int size_b
-
-    
-} piles_t;
-
-
-
-#endif
+void	ft_putchar(char c, int *counter)
+{	
+	if (*counter == -1)
+		return ;
+	if (write(1, &c, 1) == -1)
+		*counter = -1;
+	else
+		*counter += 1;
+}

@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_both.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-01-13 11:44:53 by sraiha            #+#    #+#             */
-/*   Updated: 2025-01-13 11:44:53 by sraiha           ###   ########.fi       */
+/*   Created: 2024/12/09 13:52:48 by sraiha            #+#    #+#             */
+/*   Updated: 2024/12/13 17:09:40 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-void    ss(node_list *a, node_list *b)
+void	ft_putstr(char *str, int *counter)
 {
-
-}
-
-void    rr(node_list *a, node_list *b)
-{
-
-}
-
-void    rrr(node_list *a, node_list *b)
-{
-    
+	if (!str)
+		str = "(null)";
+	while (*str)
+	{
+		ft_putchar(*str++, counter);
+	}
 }

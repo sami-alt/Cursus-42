@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_a.c                                           :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-01-13 11:36:22 by sraiha            #+#    #+#             */
-/*   Updated: 2025-01-13 11:36:22 by sraiha           ###   ########.fi       */
+/*   Created: 2024/12/07 11:19:31 by sraiha            #+#    #+#             */
+/*   Updated: 2024/12/13 15:30:58 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-void    swap(node_list *list, char *command)
+void	ft_puthex(unsigned int num, int *counter, char *base)
 {
+	char	*str;
 
-}
-
-void    push(node_list *list, char *command)
-{
-
-}
-
-void    rotate(node_list *list, char *command)
-{
-
-}
-
-void    reverse_rotate(node_list *list, char *command)
-{
-    
+	str = ft_put_num_by_base(num, base);
+	ft_putstr(str, counter);
+	free(str);
 }

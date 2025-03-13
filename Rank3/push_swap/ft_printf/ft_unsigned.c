@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_unsigned.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-01-13 11:38:31 by sraiha            #+#    #+#             */
-/*   Updated: 2025-01-13 11:38:31 by sraiha           ###   ########.fi       */
+/*   Created: 2024/12/09 13:58:11 by sraiha            #+#    #+#             */
+/*   Updated: 2024/12/13 15:30:58 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H_
-# define PUSH_SWAP_H
+#include "ft_printf.h"
 
-typedef struct piles_s
+void	ft_putunsigned(unsigned int nbr, int *counter)
 {
-    int *pile_a;
-    int *pile_b
-    int size_a;
-    int size_b
+	char	*number;
 
-    
-} piles_t;
-
-
-
-#endif
+	number = ft_put_num_by_base(nbr, DECIMAL);
+	ft_putstr(number, counter);
+	free(number);
+}
