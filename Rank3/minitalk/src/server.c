@@ -6,45 +6,42 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:13:40 by sraiha            #+#    #+#             */
-/*   Updated: 2025/02/27 13:44:17 by sraiha           ###   ########.fr       */
+/*   Updated: 2025/03/17 15:02:28 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
 
-void	receive_bit(int sig)
+void	receive_bit(int sig, siginfo_t *info, void *context)
 {
 	static int	bit;
-	static int	i;
+	static char	c;
 
+	(void)context;
+	c <<= 1;
 	if (sig == SIGUSR1)
-		i |= (0x01 << bit);
+		c |= 1;
 	bit++;
 	if (bit == 8)
 	{
-		ft_printf("%c", i);
+		write(1, &c, 1);
 		bit = 0;
-		i = 0;
+		c = 0;
 	}
+	kill(info->si_pid, SIGUSR1);
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int	pid;
+	struct sigaction	sa;
 
-	(void)argv;
-	if (argc != 1)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
-	pid = getpid();
-	ft_printf("%d\n", pid);
-	while (argc == 1)
-	{
-		signal(SIGUSR1, receive_bit);
-		signal(SIGUSR2, receive_bit);
+	sa.sa_sigaction = receive_bit;
+	sa.sa_flags = SA_SIGINFO | SA_RESTART;
+	sigemptyset(&sa.sa_mask);
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+	ft_printf("%d\n", getpid());
+	while (1)
 		pause();
-	}
 	return (0);
 }
