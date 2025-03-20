@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_a.c                                           :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-01-13 11:36:22 by sraiha            #+#    #+#             */
-/*   Updated: 2025-01-13 11:36:22 by sraiha           ###   ########.fi       */
+/*   Created: 2025/01/13 11:36:22 by sraiha            #+#    #+#             */
+/*   Updated: 2025/03/20 13:22:53 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    rotate_a(piles_t pile)
+void    rotate_a(piles_t *pile)
 {   
     int     temp;
     int     i;
@@ -29,10 +29,10 @@ void    rotate_a(piles_t pile)
         i++;
     }
     pile->pile_b[i] = temp;
-
+    ft_printf("ra\n");
 }
 
-void    rotate_b(piles_t pile)
+void    rotate_b(piles_t *pile)
 {
     int     temp;
     int     i;
@@ -47,10 +47,10 @@ void    rotate_b(piles_t pile)
         i++;
     }
     pile->pile_b[i] = temp;
-    
+    ft_printf("rb\n");
 }
 
-void    rotate_r(piles_t pile)
+void    rotate_r(piles_t *pile)
 {
     int     temp;
     int     i;
@@ -75,5 +75,6 @@ void    rotate_r(piles_t pile)
         i++;
     }
     pile->pile_b[i] = temp;
+    ft_printf("rr\n");
 }
 

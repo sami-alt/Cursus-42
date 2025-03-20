@@ -1,0 +1,14 @@
+{
+   MinilibX_malloc_error
+   Memcheck:Leak
+   fun:malloc
+   fun:mlx_init
+   obj:/usr/lib/libX11.so.*
+}
+
+{
+   MinilibX_unknown_read
+   Memcheck:Addr16
+   fun:XPending
+   obj:/usr/lib/libX11.so.*
+}

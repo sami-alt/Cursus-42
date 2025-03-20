@@ -6,7 +6,7 @@
 #    By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 10:30:15 by sraiha            #+#    #+#              #
-#    Updated: 2025/02/28 13:15:22 by sraiha           ###   ########.fr        #
+#    Updated: 2025/03/19 15:01:33 by sraiha           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,18 @@ SRC_FILES = $(addprefix $(SRC_DIR), $(SRC))
 OBJS = $(SRC_FILES:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Werror  -Wextra
+CFLAGS = -Wall -Werror  -Wextra -g
 INCLUDE = -I include
 RM = rm -rf
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-MLXFLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
-MLX_DIR = ./mlx
+FT_PRINTF_DIR = ft_printf
+FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
+
+MLXFLAGS = -Lminilibx-linux -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_DIR = ./minilibx-linux
 MLX = $(MLX_DIR)/libmlx_Linux.a
 
 SRC = so_long.c \
@@ -43,11 +46,13 @@ all: $(NAME)
 
 $(NAME) : $(OBJS)
 	@make -C libft
-	@make -C mlx
-	$(CC) $(CFLAGS) $(OBJS) $(INCLUDE) $(LIBFT) $(MLX) $(MLXFLAGS) -o $(NAME)
+	@make -C ft_printf
+	@make -C minilibx-linux
+	$(CC) $(CFLAGS) $(OBJS) $(INCLUDE) $(LIBFT) $(MLX) $(MLXFLAGS) ft_printf/libftprintf.a -o $(NAME)
 
 clean:
 	@make clean -C $(LIBFT_DIR)
+	@make  clean -C $(FT_PRINTF_DIR)
 	@make clean -C $(MLX_DIR)
 	rm -f $(OBJS) 
 
@@ -55,6 +60,7 @@ clean:
 fclean:
 	rm  -f $(NAME)
 	@make fclean -C $(LIBFT_DIR)
+	@make  fclean -C $(FT_PRINTF_DIR)
 
 re: fclean all
 
