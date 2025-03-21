@@ -35,8 +35,8 @@ void    push_swap(char *av)
     pile.size_b = 0;
     while (i++ < size)
         pile.pile_a[i] = push_swap_atoi(&av[i], pile.pile_a);
-    check_for_doubles(pile, size);
-    sort(pile.pile_a, size);
+    check_for_doubles(pile.pile_a, size);
+    sort(pile, size);
     free(pile.pile_a);
     free(pile.pile_b);
 }
@@ -48,7 +48,7 @@ int     main(int ac, char **av)
         av++;
         if (ac == 2)
             av = ft_split(*av, ' ');
-        push_swap(av);
+        push_swap(*av);
         return (0);
     }
     return (0);
