@@ -54,9 +54,7 @@ void	sort_three_b(piles_t *pile, int len)
 			else
 				swap_b(pile);
 		}
-
 	}
-
 }
 
 int 	find_pivot(int *pivot, int *pile, int size)
@@ -102,13 +100,35 @@ int		quicksort_a(piles_t *pile, int len, int count)
 			rotate_a(pile); 
 	while (numbers / 2  + numbers % 2 != pile->size_a && count--)
 		reverse_rotate_a(pile);
-	return (quicksort_a(pile, numbers / 2 + numbers % 2, 0), quicksort_b(pile, (numbers / 2 + numbers % 2), 0));
-	return (0);
+	return (quicksort_a(pile, numbers / 2 + numbers % 2, 0), quicksort_b(pile, (numbers / 2), 0));
+	return (1);
 	}
 }
-
 int 	quicksort_b(piles_t *pile, int len, int count)
 {
+	int		pivot:
+	int		numbers;
 
-	return (0);
+	if(check_sorted(pile_b, len, 0))
+		return ;
+	if (len <= 3)
+	{
+		sort_three_b(pile, len);
+		return (1);
+	}
+	numbers = len;
+	if (!find_pivot(&pivot,  pile->pile_b, len))
+		return (0);
+
+	while (len != numbers / 2)
+	{
+		if (pile->pile_b[0] >= pivot)
+			push_b(pile);
+		else if (++count)
+			rotate_b(pile);
+
+	}
+	while (numers / 2 !=  pile->size_b && count--)
+		reverse__rotate_b(pile);
+	return (quicksort_a(pile, numbers / 2 + numbers % 2, 0), quicksort_b(pile, (numbers / 2), 0))
 }

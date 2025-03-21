@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H_
+#ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include "ft_printf/ft_printf.h"
@@ -25,6 +25,11 @@ typedef struct piles_s
     int size_b;    
 } piles_t;
 
-
+void	temp_sort(int *temp_pile, int size);
+int 	push_swap_atoi(char *str, int *pile);
+int 	push_swap_strlen(char **av);
+int 	check_sorted(int *pile, int size, int order);
+void 	check_for_doubles(int *pile, int size);
+int		sort(piles_t pile, int size);
 
 #endif
