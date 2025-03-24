@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	reverse_rotate_a(piles_t *pile)
 {
@@ -56,7 +56,7 @@ void	reverse_rotate_r(piles_t *pile)
 	int 	i;
 	if(pile->size_b == 0 || pile->size_b == 1 || pile->size_a == 0 || pile->size_a == 1)
 		return ;
-		i = pile->size_a - 1;
+	i = pile->size_a - 1;
 	temp = pile->pile_a[i];
 	while(i)
 	{
@@ -64,7 +64,7 @@ void	reverse_rotate_r(piles_t *pile)
 		i--;
 	}
 	pile->pile_a[i] = temp;	
-		i = pile->size_b - 1;
+	i = pile->size_b - 1;
 	temp = pile->pile_b[i];
 	while(i)
 	{

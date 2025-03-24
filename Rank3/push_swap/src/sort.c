@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	temp_sort(int *temp_pile, int size)
 {
@@ -19,9 +19,10 @@ void	temp_sort(int *temp_pile, int size)
 	int		j;
 	int		temp;
 
+	i = 0;
 	while(i < size)
 	{
-		i = j + 1;
+		j = i + 1;
 		while(j < size)
 		{
 			if (temp_pile[i] > temp_pile[j])
@@ -36,27 +37,32 @@ void	temp_sort(int *temp_pile, int size)
 	}
 }
 
-void	sort_three_a(pile_t *pile)
+void	sort_three_a(piles_t *three)
 {
-	if(pile->pile_a[0] > pile->pile_a[1] && pile->pile_a[0] < pile->pile_a[2] && pile->pile_a[1] < pile->pile_a[2] )
-		swap_a(pile);
-	if(pile->pile_a[0] > pile->pile_a[1] && pile->pile_a[0] > pile->pile_a[2] && pile->pile_a[1] > pile->pile_a[2] )
+	if (three->pile_a[0] > three->pile_a[1] && three->pile_a[0] < three->pile_a[2]
+		&& three->pile_a[1] < three->pile_a[2])
+		swap_a(three);
+	if (three->pile_a[0] > three->pile_a[1] && three->pile_a[0] > three->pile_a[2]
+		&& three->pile_a[1] > three->pile_a[2])
 	{
-		swap_a(pile);
-		reverse_rotate_a(pile);
+		swap_a(three);
+		reverse_rotate_a(three);
 	}
-	if(pile->pile_a[0] > pile->pile_a[1] && pile->pile_a[0] > pile->pile_a[2] && pile->pile_a[1] < pile->pile_a[2] )
-		rotate_a(pile);
-	if(pile->pile_a[0] < pile->pile_a[1] && pile->pile_a[0] < pile->pile_a[2] && pile->pile_a[1] > pile->pile_a[2] )
+	if (three->pile_a[0] > three->pile_a[1] && three->pile_a[0] > three->pile_a[2]
+		&& three->pile_a[1] < three->pile_a[2])
+		rotate_a(three);
+	if (three->pile_a[0] < three->pile_a[1] && three->pile_a[0] < three->pile_a[2]
+		&& three->pile_a[1] > three->pile_a[2])
 	{
-		swap_a(pile);
-		rotate_a(pile);
+		swap_a(three);
+		rotate_a(three);
 	}
-	if(pile->pile_a[0] < pile->pile_a[1] && pile->pile_a[0] > pile->pile_a[2] && pile->pile_a[1] > pile->pile_a[2] )
-		reverse_rotate_a(pile);
+	if (three->pile_a[0] < three->pile_a[1] && three->pile_a[0] > three->pile_a[2]
+		&& three->pile_a[1] > three->pile_a[2])
+		reverse_rotate_a(three);
 }
 
-int		sort(piles_t pile, int size)
+int		sort(piles_t *pile, int size)
 {
 	if(check_sorted(pile->pile_a, pile->size_a, 0) == 0)
 	{
@@ -65,7 +71,7 @@ int		sort(piles_t pile, int size)
 		else if (size == 3)
 			sort_three_a(pile);
 		else
-			quicksort_a(pile, size, 0);
+			quicksort_pile_a(pile, size, 0);
 	}
 	return (0);
 }
@@ -76,6 +82,6 @@ int		ft_push(piles_t *pile, int len, int push)
 		push_b(pile);
 	else
 		push_a(pile);
-	len--
-return (len);
+	len--;
+	return (len);
 }

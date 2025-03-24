@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void 	error(int *pile)
 {
@@ -44,20 +44,29 @@ int 	push_swap_atoi(char *str, int *pile)
 	while((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	while(str[i] == '-' || str[i] == '+')
+	{
 		if (str[i] == '-')
 			sign = -1;
 		i++;
+	}
 	while(str[i])
 	{
-		if(!ft_isdigit(str[i]))
+		if (str[i] < '0' || str[i] > '9')
+		{
+			ft_printf("error in atoi digit");
 			error(pile);
-		number = number * 10 + (str[i]  - '0');
+		}
+		number = (str[i] - '0') + (number * 10);
 		i++;	
 	}
-	if((number > 2147483648 && sign == -1) || (number > 2147483648 && sign == 1))
+	if((number > 2147483648 && sign == -1) || (number > 2147483647 && sign == 1))
+	{
+		ft_printf("error in atoi overflow");
 		error(pile);
+	}
 	return (number  * sign);
 }
+
 int 	check_sorted(int *pile, int size, int order)
 {
 	int 	i;
@@ -92,13 +101,16 @@ void 	check_for_doubles(int *pile, int size)
 	int		j;
 
 	i = 0;
-	j = 0;
+	j = 1;
 	while(i < size)
 	{
 		while(j < size)
 		{
 			if(pile[i] == pile[j])
+			{
+				ft_printf("error in doubles");
 				error(pile);
+			}
 			j++;
 		}
 		i++;
