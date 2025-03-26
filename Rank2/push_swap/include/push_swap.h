@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:38:31 by sraiha            #+#    #+#             */
-/*   Updated: 2025/03/20 13:42:21 by sraiha           ###   ########.fr       */
+/*   Updated: 2025/03/26 15:59:26 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,53 +19,39 @@
 
 typedef struct piles_s
 {
-    int *pile_a;
-    int *pile_b;
-    int size_a;
-    int size_b;    
-} piles_t;
+	int	*pile_a;
+	int	*pile_b;
+	int	size_a;
+	int	size_b;
+}		t_piles;
 
-//push.c
-void    push_a(piles_t *pile);
-void    push_b(piles_t *pile);
-
-//swap.c
-void	swap_a(piles_t *pile);
-void	swap_b(piles_t *pile);
-void	swap_s(piles_t *pile);
-
-//rotate.c
-void    rotate_a(piles_t *pile);
-void    rotate_b(piles_t *pile);
-void    rotate_r(piles_t *pile);
-
-//revese_sort.c
-void	swap_s(piles_t *pile);
-void	reverse_rotate_a(piles_t *pile);
-void	reverse_rotate_b(piles_t *pile);
-
-//utils.c
-void 	error(int *pile);
-int 	push_swap_atoi(char *str, int *pile);
-int 	push_swap_strlen(char **av);
-int 	check_sorted(int *pile, int size, int order);
-void 	check_for_doubles(int *pile, int size);
-
-//quicksort.c
-void	sort_three_a_b(piles_t *pile, int len);
-int 	sort_three_b(piles_t *pile, int len);
-int 	find_pivot(int *pivot, int *pile, int size);
-int		quicksort_pile_a(piles_t *pile, int len, int count);
-int 	quicksort_pile_b(piles_t *pile, int len, int count);
-
-//sort.c
+void	push_a(t_piles *pile);
+void	push_b(t_piles *pile);
+void	swap_a(t_piles *pile);
+void	swap_b(t_piles *pile);
+void	swap_s(t_piles *pile);
+void	rotate_a(t_piles *pile);
+void	rotate_b(t_piles *pile);
+void	rotate_r(t_piles *pile);
+void	swap_s(t_piles *pile);
+void	reverse_rotate_a(t_piles *pile);
+void	reverse_rotate_b(t_piles *pile);
+int		push_swap_atoi(char *str, t_piles *pile, char **av, int size);
+int		push_swap_strlen(char **av);
+int		check_sorted(int *pile, int size, int order);
+void	check_for_doubles(t_piles *pile, int size, char **av);
+void	sort_three_a_b(t_piles *pile, int len);
+int		sort_three_b(t_piles *pile, int len);
+int		find_pivot(int *pivot, int *pile, int size);
+int		quicksort_pile_a(t_piles *pile, int len, int count);
+int		quicksort_pile_b(t_piles *pile, int len, int count);
 void	temp_sort(int *temp_pile, int size);
-void	sort_three_a(piles_t *pile);
-int		sort(piles_t *pile, int size);
-int		ft_push(piles_t *pile, int len, int push);
-
-//push_swap.c
-void    push_swap(char **av);
-int 	push_swap_strlen(char **av);
+void	sort_three_a(t_piles *pile);
+int		sort(t_piles *pile, int size);
+int		ft_push(t_piles *pile, int len, int push);
+void	push_swap(char **av);
+int		push_swap_strlen(char **av);
+void	error(t_piles *pile, char **av, int size);
+void	free_av(char **av, int size);
 
 #endif

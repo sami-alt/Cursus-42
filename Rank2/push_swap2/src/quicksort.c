@@ -6,41 +6,41 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:39:31 by sraiha            #+#    #+#             */
-/*   Updated: 2025/03/25 14:57:06 by sraiha           ###   ########.fr       */
+/*   Updated: 2025/03/20 17:12:34 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	quicksort_three_pile_a_and_b(t_piles *pile, int len)
+void	sort_three_a_b(piles_t *pile, int len)
 {
-	if (len == 3 && pile->size_a == 3)
+	if(len == 3 && pile->size_a == 3)
 		sort_three_a(pile);
-	else if (len == 2)
+	else if(len == 2)
 	{
 		if (pile->pile_a[0] > pile->pile_a[1])
 			swap_a(pile);
 	}
-	else if (len == 3)
+	else if (len == 3 )
 	{
 		while (len != 3 || !(pile->pile_a[0] < pile->pile_a[1]
-				&& pile->pile_a[1] < pile->pile_a[2]))
-		{
-			if (len == 3 && pile->pile_a[0] > pile->pile_a[1]
-				&& pile->pile_a[2])
-				swap_a(pile);
-			else if (len == 3 && !(pile->pile_a[2] > pile->pile_a[0]
-					&& pile->pile_a[2] > pile->pile_a[1]))
-				len = ft_push(pile, len, 0);
-			else if (pile->pile_a[0] > pile->pile_a[1])
-				swap_a(pile);
-			else if (len++)
-				push_a(pile);
-		}
+			&& pile->pile_a[1] < pile->pile_a[2]))
+	{
+		if (len == 3 && pile->pile_a[0] > pile->pile_a[1] && pile->pile_a[2])
+			swap_a(pile);
+		else if (len == 3 && !(pile->pile_a[2] > pile->pile_a[0]
+				&& pile->pile_a[2] > pile->pile_a[1]))
+			len = ft_push(pile, len, 0);
+		else if (pile->pile_a[0] > pile->pile_a[1])
+			swap_a(pile);
+		else if (len++)
+			push_a(pile);
+	}
 	}
 }
 
-int	sort_three_b(t_piles *pile, int len)
+
+int	sort_three_b(piles_t *pile, int len)
 {
 	if (len == 1)
 		push_a(pile);
@@ -53,8 +53,7 @@ int	sort_three_b(t_piles *pile, int len)
 	}
 	else if (len == 3)
 	{
-		while (len || !(pile->pile_a[0] < pile->pile_a[1]
-				&& pile->pile_a[1] < pile->pile_a[2]))
+		while (len || !(pile->pile_a[0] < pile->pile_a[1] && pile->pile_a[1] < pile->pile_a[2]))
 		{
 			if (len == 1 && pile->pile_a[0] > pile->pile_a[1])
 				swap_a(pile);
@@ -68,27 +67,27 @@ int	sort_three_b(t_piles *pile, int len)
 	return (0);
 }
 
-int	find_pivot(int *pivot, int *pile, int size)
+int 	find_pivot(int *pivot, int *pile, int size)
 {
-	int	*temporaire_pile;
-	int	i;
+	int		*temp_pile;
+	int 	i;
 
-	temporaire_pile = (int *)malloc(size * sizeof(int));
-	if (!temporaire_pile)
+	temp_pile = malloc(size * sizeof(int));
+	if(!temp_pile)
 		return (0);
 	i = 0;
-	while (i < size)
+	while(i < size)
 	{
-		temporaire_pile[i] = pile[i];
+		temp_pile[i] = pile[i];
 		i++;
 	}
-	temp_sort(temporaire_pile, size);
-	*pivot = temporaire_pile[size / 2];
-	free(temporaire_pile);
+	temp_sort(temp_pile, size);
+	*pivot = temp_pile[size / 2];
+	free(temp_pile);
 	return (1);
 }
 
-int	quicksort_pile_a(t_piles *pile, int len, int count_r)
+int	quicksort_pile_a(piles_t *pile, int len, int count_r)
 {
 	int	pivot;
 	int	numbers;
@@ -98,9 +97,10 @@ int	quicksort_pile_a(t_piles *pile, int len, int count_r)
 	numbers = len;
 	if (len <= 3)
 	{
-		quicksort_three_pile_a_and_b(pile, len);
+		sort_three_a_b(pile, len);
 		return (1);
 	}
+	
 	if (!find_pivot(&pivot, pile->pile_a, len))
 		return (0);
 	while (len != numbers / 2 + numbers % 2)
@@ -117,10 +117,12 @@ int	quicksort_pile_a(t_piles *pile, int len, int count_r)
 	return (1);
 }
 
-int	quicksort_pile_b(t_piles *pile, int len, int count_r)
+
+int	quicksort_pile_b(piles_t *pile, int len, int count_r)
 {
 	int	pivot;
 	int	numbers;
+
 
 	if (check_sorted(pile->pile_b, len, 1) == 1)
 		while (len--)

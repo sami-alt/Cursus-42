@@ -6,27 +6,25 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:38:47 by sraiha            #+#    #+#             */
-/*   Updated: 2025/03/26 15:58:45 by sraiha           ###   ########.fr       */
+/*   Updated: 2025/03/20 14:38:14 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	error(t_piles *pile, char **av, int size)
+void 	error(int *pile)
 {
-	free(pile->pile_a);
-	free(pile->pile_b);
-	free_av(av, size);
-	write(STDERR_FILENO, "Error\n", 6);
+	free(pile);
+	ft_printf("Error\n");
 	exit(1);
 }
 
-int	push_swap_strlen(char **av)
+int 	push_swap_strlen(char **av)
 {
-	int	i;
-
+	int		i;
+	
 	i = 0;
-	while (*av)
+	while(*av)
 	{
 		av++;
 		i++;
@@ -34,42 +32,49 @@ int	push_swap_strlen(char **av)
 	return (i);
 }
 
-int	push_swap_atoi(char *str, t_piles *pile, char **av, int size)
+int 	push_swap_atoi(char *str, int *pile)
 {
-	unsigned int		i;
+	unsigned int	i;
 	int					sign;
 	unsigned long int	number;
 
 	i = 0;
 	number = 0;
-	sign = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+	sign  = 1;
+	while((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if ((str[i] == '+' || str[i] == '-') && ft_isdigit(str[i + 1]))
-		i++;
-	while (str[i])
+	while(str[i] == '-' || str[i] == '+')
 	{
-		if (str[i] < '0' || str[i] > '9')
-			error(pile, av, size);
-		number = (str[i] - '0') + (number * 10);
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	if ((number > 2147483648 && sign == -1) || (number > 2147483647
-			&& sign == 1))
-		error(pile, av, size);
-	return (number * sign);
+	while(str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+		{
+			ft_printf("error in atoi digit");
+			error(pile);
+		}
+		number = (str[i] - '0') + (number * 10);
+		i++;	
+	}
+	if((number > 2147483648 && sign == -1) || (number > 2147483647 && sign == 1))
+	{
+		ft_printf("error in atoi overflow");
+		error(pile);
+	}
+	return (number  * sign);
 }
 
-int	check_sorted(int *pile, int size, int order)
+int 	check_sorted(int *pile, int size, int order)
 {
-	int	i;
+	int 	i;
 
 	if (order == 0)
 	{
 		i = 1;
-		while (i < size)
+		while(i < size)
 		{
 			if (pile[i - 1] > pile[i])
 				return (0);
@@ -80,7 +85,7 @@ int	check_sorted(int *pile, int size, int order)
 	else
 	{
 		i = 1;
-		while (i < size)
+		while(i < size)
 		{
 			if (pile[i - 1] < pile[i])
 				return (0);
@@ -90,22 +95,26 @@ int	check_sorted(int *pile, int size, int order)
 	}
 }
 
-void	check_for_doubles(t_piles *pile, int size, char **av)
+void 	check_for_doubles(int *pile, int size)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 1;
-	while (i < size)
+	while(i < size)
 	{
-		while (j < size)
+		while(j < size)
 		{
-			if (pile->pile_a[i] == pile->pile_a[j])
-				error(pile, av, size);
+			if(pile[i] == pile[j])
+			{
+				ft_printf("error in doubles");
+				error(pile);
+			}
 			j++;
 		}
 		i++;
 		j = i + 1;
 	}
+
 }
