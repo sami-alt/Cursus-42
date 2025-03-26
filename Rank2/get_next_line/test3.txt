@@ -1,3 +1,0 @@
-text from file three
-second line of file three
-and the final line of file three
