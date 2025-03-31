@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:38:31 by sraiha            #+#    #+#             */
-/*   Updated: 2025/03/26 15:59:26 by sraiha           ###   ########.fr       */
+/*   Updated: 2025/03/28 14:23:26 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ void	rotate_r(t_piles *pile);
 void	swap_s(t_piles *pile);
 void	reverse_rotate_a(t_piles *pile);
 void	reverse_rotate_b(t_piles *pile);
-int		push_swap_atoi(char *str, t_piles *pile, char **av, int size);
 int		push_swap_strlen(char **av);
 int		check_sorted(int *pile, int size, int order);
-void	check_for_doubles(t_piles *pile, int size, char **av);
 void	sort_three_a_b(t_piles *pile, int len);
 int		sort_three_b(t_piles *pile, int len);
 int		find_pivot(int *pivot, int *pile, int size);
@@ -49,9 +47,12 @@ void	temp_sort(int *temp_pile, int size);
 void	sort_three_a(t_piles *pile);
 int		sort(t_piles *pile, int size);
 int		ft_push(t_piles *pile, int len, int push);
-void	push_swap(char **av);
+void	push_swap(char **av, int alloc);
 int		push_swap_strlen(char **av);
-void	error(t_piles *pile, char **av, int size);
-void	free_av(char **av, int size);
+
+void	check_for_doubles(t_piles *pile, int size, char **av, int alloc);
+int		push_swap_atoi(char *str, t_piles *pile, char **av, int alloc);
+void	error(t_piles *pile, char **av, int alloc);
+void	free_av(char **av);
 
 #endif
