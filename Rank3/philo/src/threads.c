@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-09 09:47:33 by sraiha            #+#    #+#             */
-/*   Updated: 2025-04-09 09:47:33 by sraiha           ###   ########fii       */
+/*   Created: 2025/04/09 09:47:33 by sraiha            #+#    #+#             */
+/*   Updated: 2025/04/15 15:24:38 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-static void clean_threads(t_data *data, t_philosophers *philos, int created_count)
+void clean_threads(t_data *data, t_philosophers *philos, int created_count)
 {
     int i;
 
@@ -24,7 +24,7 @@ static void clean_threads(t_data *data, t_philosophers *philos, int created_coun
     }
 }
 
-static int  launch_threads(t_data *data, t_philosophers **philos)
+int  launch_threads(t_data *data, t_philosophers **philos)
 {
     pthread_t   monitor;
     int         i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-07 08:54:30 by sraiha            #+#    #+#             */
-/*   Updated: 2025-04-07 08:54:30 by sraiha           ###   ########fii       */
+/*   Created: 2025/04/07 08:54:30 by sraiha            #+#    #+#             */
+/*   Updated: 2025/04/15 15:40:17 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void    *monitor(void *arg)
     int all_full;
     int i;
 
-    data =  &philosophers[0].data;
+    data =  philosophers[0].data;
     philosophers  = (t_philosophers *)arg;
     i = 0;
     while (1)

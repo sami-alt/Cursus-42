@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-09 09:50:51 by sraiha            #+#    #+#             */
-/*   Updated: 2025-04-09 09:50:51 by sraiha           ###   ########fii       */
+/*   Created: 2025/04/09 09:50:51 by sraiha            #+#    #+#             */
+/*   Updated: 2025/04/15 15:23:33 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    free_resources(t_data *data, t_philosophers *philosophers)
     free(philosophers);
 }
 
-static void clean_exit(t_data *data, t_philosophers *philos, int exit_code)
+void clean_exit(t_data *data, t_philosophers *philos, int exit_code)
 {
     int i;
 
