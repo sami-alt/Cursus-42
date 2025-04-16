@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/time.h>
+# include <stdbool.h>
 
 typedef struct s_data
 {
@@ -27,7 +28,7 @@ typedef struct s_data
     int             time_to_sleep;
     int             max_meals;
     long            start_time;
-    int             simulation_ended;
+    bool             simulation_ended;
     pthread_mutex_t death_lock;
     pthread_mutex_t *forks;
     pthread_mutex_t write_lock;
@@ -72,6 +73,6 @@ void clean_exit(t_data *data, t_philos *philos, int exit_code);
 void clean_threads(t_philos *philos, int created_count);
 int  launch_threads(t_data *data, t_philos **philos);
 
-int stop_simulation(t_data  *data);
+bool stop_simulation(t_philos  *philos);
 
 #endif

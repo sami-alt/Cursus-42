@@ -6,7 +6,7 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 08:43:20 by sraiha            #+#    #+#             */
-/*   Updated: 2025/04/16 13:19:33 by sraiha           ###   ########.fr       */
+/*   Updated: 2025/04/16 13:40:46 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int init_resources(t_data *data, t_philos **philos)
         (*philos)[i].data = data;
         i++;
     }
-    data->simulation_ended = 0;
+    data->simulation_ended = false;
     data->start_time = get_time();
     return (1);
 }
