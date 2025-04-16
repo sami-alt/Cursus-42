@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-07 08:42:03 by sraiha            #+#    #+#             */
-/*   Updated: 2025-04-07 08:42:03 by sraiha           ###   ########fii       */
+/*   Created: 2025/04/07 08:42:03 by sraiha            #+#    #+#             */
+/*   Updated: 2025/04/16 13:23:56 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include "../include/philo.h"
 
 void    *philosopher_routine(void *arg)
 {
-    t_philosophers *philosopher;
+    t_philos *philosopher;
     
-    philosopher = (t_philosophers *)arg;
+    philosopher = (t_philos *)arg;
     while(!stop_simulation(philosopher->data))
     {   
         take_forks(philosopher);
@@ -35,7 +35,6 @@ void    *philosopher_routine(void *arg)
 int stop_simulation(t_data  *data)
 {
     int     stop;
-
     pthread_mutex_lock(&data->death_lock);
     stop = data->simulation_ended;
     pthread_mutex_unlock(&data->death_lock);
@@ -43,7 +42,7 @@ int stop_simulation(t_data  *data)
 
 }
 
-void    take_forks(t_philosophers *philosopher)
+void    take_forks(t_philos *philosopher)
 {
     if (philosopher->id % 2 == 1)
     {
@@ -61,7 +60,7 @@ void    take_forks(t_philosophers *philosopher)
     }
 }
 
-void    eat(t_philosophers *philosopher)
+void    eat(t_philos *philosopher)
 {
     philosopher->last_meal_eaten = get_time();
     philosopher->meal_eaten++;
@@ -69,8 +68,8 @@ void    eat(t_philosophers *philosopher)
     philo_sleep(philosopher->data->time_to_eat);
 }
 
-void    drop_forks(t_philosophers *philosopher)
+void    drop_forks(t_philos *philosopher)
 {
-    pthread_mutex_lock(philosopher->left_fork);
-    pthread_mutex_lock(philosopher->rigth_fork);
+    pthread_mutex_unlock(philosopher->left_fork);
+    pthread_mutex_unlock(philosopher->rigth_fork);
 }

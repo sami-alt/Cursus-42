@@ -6,11 +6,11 @@
 /*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 08:23:33 by sraiha            #+#    #+#             */
-/*   Updated: 2025/04/15 15:30:59 by sraiha           ###   ########.fr       */
+/*   Updated: 2025/04/16 13:19:30 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include "../include/philo.h"
 
 static int	ft_is_space( char c)
 {
@@ -62,9 +62,9 @@ void    philo_sleep(long milliseconds)
         usleep(100);
 }
 
-void 	print_status(t_philosophers *philospher, char *status)
+void 	print_status(t_philos *philospher, char *status)
 {
-	pthread_mutex_lock(&philospher->data->lock);
+	pthread_mutex_lock(&philospher->data->write_lock);
 	printf("%ld %d %s\n", get_time() - philospher->data->start_time, philospher->id, status);
-	pthread_mutex_unlock(&philospher->data->lock);
+	pthread_mutex_unlock(&philospher->data->write_lock);
 }

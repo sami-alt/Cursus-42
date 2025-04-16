@@ -6,13 +6,11 @@
 #    By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/05 11:59:39 by sraiha            #+#    #+#              #
-#    Updated: 2025/04/15 15:20:34 by sraiha           ###   ########.fr        #
+#    Updated: 2025/04/16 13:20:40 by sraiha           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philosophers
-
-
+NAME = philo
 
 SRC = src/main.c \
 	  src/cleanup.c \
@@ -22,7 +20,7 @@ SRC = src/main.c \
 	  src/utils.c \
 	  src/actions.c
 
-OBJS =$(SRC:.=.o)
+OBJS =$(SRC:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Werror  -Wextra -g
@@ -32,14 +30,14 @@ RM = rm -rf
 
 all:$(NAME)
 
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+
 %.o: %.c
 		$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(ONBJS)
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
-
 clean:
-	fr -f $(OBJS)
+	rm -f $(OBJS)
 
 fclean:	clean
 	rm -f $(NAME)

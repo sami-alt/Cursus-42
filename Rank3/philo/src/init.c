@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-07 08:43:20 by sraiha            #+#    #+#             */
-/*   Updated: 2025-04-07 08:43:20 by sraiha           ###   ########fii       */
+/*   Created: 2025/04/07 08:43:20 by sraiha            #+#    #+#             */
+/*   Updated: 2025/04/16 13:19:33 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include "../include/philo.h"
 
-int     parse_args(int ac,char **av, t_data *data)
+int     parse_arguments(int ac,char **av, t_data *data)
 {   
     data->number_of_philos = ft_atoi(av[1]);
     data->time_to_die = ft_atoi(av[2]);
@@ -28,47 +28,35 @@ int     parse_args(int ac,char **av, t_data *data)
     return (1);
 }
 
-static int  allocate_resources(t_data *data, t_philosophers **philos)
+static int init_mutexes(t_data *data)
 {
     int i;
+
+    i = 0;
+    while(i < data->number_of_philos)
+    {
+        if (pthread_mutex_init(&data->forks[i], NULL) != 0)
+            return (0);
+        i++;
+    }
+    if (pthread_mutex_init(&data->write_lock, NULL) != 0
+        || pthread_mutex_init(&data->death_lock, NULL) != 0)
+        return (0);
+    return (1);
+}
+
+int init_resources(t_data *data, t_philos **philos)
+{
+    int     i;
 
     data->forks = malloc(sizeof(pthread_mutex_t) * data->number_of_philos);
     if (!data->forks)
         return (0);
-    *philos = malloc(sizeof(t_philosophers) * data->number_of_philos);
-    if (!*philos)
-    {
-        free(data->forks);
-        return (0);
-    }
-    i = 0;
-    while (i < data->number_of_philos)
-    {
-        if (pthread_mutex_init(&data->forks[i], NULL) != 0)
-        {
-            while (--i >= 0)
-                pthread_mutex_destroy(&data->forks[i]);
-            free(data->forks);
-            free(*philos);
-            return (0);
-        }
-        i++;
-    }
-    return (1);
-}
-
-int init_resources(t_data *data, t_philosophers **philos)
-{
-    int i;
-
-    if (!allocate_resources(data, philos))
-        return (0);
-    if (pthread_mutex_init(&data->lock, NULL) != 0 ||
-        pthread_mutex_init(&data->death_lock, NULL) != 0)
-    {
-        free_resources(data, *philos);
-        return (0);
-    }
+    *philos = malloc(sizeof(t_philos) * data->number_of_philos);
+    if (!philos)
+        return (free(data->forks), 0);
+    if (!init_mutexes(data))
+        return (free(data->forks), free(*philos), 0);
     i = 0;
     while (i < data->number_of_philos)
     {
