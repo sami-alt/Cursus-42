@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-07 08:54:30 by sraiha            #+#    #+#             */
-/*   Updated: 2025-04-07 08:54:30 by sraiha           ###   ########fii       */
+/*   Created: 2025/04/07 08:54:30 by sraiha            #+#    #+#             */
+/*   Updated: 2025/04/16 14:33:50 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include "../include/philo.h"
 
-void    check_philosopher_death(t_philosophers *philosopher, t_data *data)
+int    check_philosopher_death(t_philos *philosopher, t_data *data)
 {
     long current_time;
     long time_since_meal;
@@ -22,51 +22,45 @@ void    check_philosopher_death(t_philosophers *philosopher, t_data *data)
     if (time_since_meal > philosopher->data->time_to_die)
     {
         pthread_mutex_lock(&data->death_lock);
-        data->simulation_ended = 1;
+        data->simulation_ended = true;
         pthread_mutex_unlock(&data->death_lock);
         print_status(philosopher, "died");
+        return (true);
     }
+    return (false);
 }
 
-int     check_meal_completion(t_data *data, t_philosophers *philosopher)
-{
-    int i;
-    int all_full;
+// int     check_meal_completion(t_data *data, t_philos *philosopher)
+// {
+//     int i;
+//     int all_full;
 
-    i = 0;
-    all_full =  1;
-    while(i < data->number_of_philos)
-    {
-        if (philosopher[i].meal_eaten < data->max_meals)
-            all_full = 0;
-        i++;
-    }
-    return (all_full);
-}
+//     i = 0;
+//     all_full =  1;
+//     while(i < data->number_of_philos)
+//     {
+//         if (philosopher[i].meal_eaten < data->max_meals)
+//             all_full = 0;
+//         i++;
+//     }
+//     return (all_full);
+// }
 
-void    *monitor(void *arg)
+void    *monitor_routine(void *arg)
 {
-    t_philosophers *philosophers;
+    t_philos *philos;
     t_data *data;
-    int all_full;
-    int i;
+    int     i;
 
-    data =  &philosophers[0].data;
-    philosophers  = (t_philosophers *)arg;
+    philos = (t_philos *)arg;
+    data = philos[0].data;
     i = 0;
-    while (1)
+    while(1)
     {
-        check_philosopher_death(&philosophers[i], data);
-        if (data->max_meals != -1)
-        {
-            all_full = check_meal_completion(data, philosophers);
-            if (all_full)
-                exit(0);
-        }
-        i = (i + 1) % data->number_of_philos;
-        if ( i == 0)
+        if (check_philosopher_death(&philos[i], data))
+            return (NULL);
+        i = (i + 1) % philos[0].data->number_of_philos;
+        if (i == 0)
             usleep(1000);
-    }
-    return (NULL);
+    } 
 }
-

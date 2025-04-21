@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sraiha <sraiha@student.hive.fi>            #+#  +:+       +#+        */
+/*   By: sraiha <sraiha@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-07 08:23:33 by sraiha            #+#    #+#             */
-/*   Updated: 2025-04-07 08:23:33 by sraiha           ###   ########fii       */
+/*   Created: 2025/04/07 08:23:33 by sraiha            #+#    #+#             */
+/*   Updated: 2025/04/16 13:19:30 by sraiha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include "../include/philo.h"
 
 static int	ft_is_space( char c)
 {
 	return (c == ' ' || (c >= '\t' && c <= '\r'));
 }
+
 
 int	ft_atoi(const char *str)
 {
@@ -33,7 +34,7 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		str++;
 	}
-	while (*str && ft_isdigit(*str))
+	while (*str && (*str >= '1' && *str <= '9' ))
 	{
 		flow_check = res * 10 + (*str++ - '0');
 		if (flow_check / 10 != res && sign < 0)
@@ -61,9 +62,9 @@ void    philo_sleep(long milliseconds)
         usleep(100);
 }
 
-void 	print_status(t_philosophers *philospher, t_data *data, char *status)
+void 	print_status(t_philos *philospher, char *status)
 {
-	pthread_mutex_lock(&philospher->data->lock);
+	pthread_mutex_lock(&philospher->data->write_lock);
 	printf("%ld %d %s\n", get_time() - philospher->data->start_time, philospher->id, status);
-	pthread_mutex_unlock(&philospher->data->lock);
+	pthread_mutex_unlock(&philospher->data->write_lock);
 }
