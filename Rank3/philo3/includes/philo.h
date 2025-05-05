@@ -38,5 +38,8 @@ int     launch_threads(t_data *data, t_philo **philos);
 void    clean_exit(t_data *data, t_philo *philos, int exit_code);
 void    print_status(t_philo *philo, char *msg);
 long    get_time(void);
+void    *philo_routine(void *arg);
+void    *monitor_routine(void *arg);
+void    custom_sleep(long milliseconds);
 
 #endif

@@ -19,7 +19,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -I includes $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
