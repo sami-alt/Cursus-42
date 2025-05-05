@@ -10,16 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-NAME = philosophers
+NAME = philo
 
-SRC = 
+SRC = sources/phlosophers.c \
+      sources/init.c \
+      sources/actions.c \
+      sources/monitoring.c \
+      sources/utils.c \
 
-all:
+
+OBJ = $(SRC:.c=.o)
+
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -pthread
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
+	rm -f $(OBJ)
 
-fclean:
+fclean: clean
+	rm -f $(NAME)
 
-re:
-
-.PHONY all clean fclean re
+re: fclean all
